@@ -13,7 +13,10 @@ import java.util.Map;
 @Slf4j
 public class BaseTest {
 
-    private String pythonCmd = "D:\\software\\anaconda3\\envs\\charts;D:\\software\\anaconda3\\envs\\charts\\Library\\mingw-w64\\bin;D:\\software\\anaconda3\\envs\\charts\\Library\\usr\\bin;D:\\software\\anaconda3\\envs\\charts\\Library\\bin;D:\\software\\anaconda3\\envs\\charts\\Scripts;D:\\software\\anaconda3\\envs\\charts\\bin;D:\\software\\anaconda3\\condabin;";
+    // Python 环境 PATH，通过环境变量 PYTHON_ENV 配置，不同系统路径不同
+    // Windows 示例: D:\\software\\anaconda3\\envs\\charts;...（分号分隔）
+    // Linux 示例: /opt/anaconda3/envs/charts:...（冒号分隔）
+    private String pythonCmd = "";
 
 
     @Test
@@ -77,7 +80,8 @@ public class BaseTest {
 
     @Test
     public void test_orc() {
-        String path = "/Users/jiangfei/Documents/kuafu/111.png";
+        // 测试 OCR 识别，请替换为实际图片路径
+        String path = "test.png";
         Tesseract tesseract = new Tesseract();
 
         // 设置语言模型路径（tessdata 文件夹）

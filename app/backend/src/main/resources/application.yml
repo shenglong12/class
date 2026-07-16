@@ -10,7 +10,7 @@ mybatis:
 
 app:
   # 文件路径 示例（ Windows配置D:/kuafu/uploadPath，Linux配置 /home/kuafu/uploadPath）
-  profile: ${UPLOAD_PATH:C:/Users/NebYae/Desktop/class/uploadPath}
+  profile: ${UPLOAD_PATH:../uploadPath}
 
 knife4j:
   enable: true
@@ -40,7 +40,7 @@ spring:
       enabled: true
   web:
     resources:
-      static-locations: file:${FRONTEND_DIR:/Users/jiangfei/kuafu/tmp/frontend/test/} , classpath:/dist/
+      static-locations: file:${FRONTEND_DIR:} , classpath:/dist/
 
 # 在控制台输出sql
 mybatis-plus:
@@ -62,7 +62,7 @@ login:
     column: wx_open_id
   relevance_column_name: relevance_table
 python:
-  env: ${PYTHON_ENV:D:\software\anaconda3\envs\charts;D:\software\anaconda3\envs\charts\Library\mingw-w64\bin;D:\software\anaconda3\envs\charts\Library\usr\bin;D:\software\anaconda3\envs\charts\Library\bin;D:\software\anaconda3\envs\charts\Scripts;D:\software\anaconda3\envs\charts\bin;D:\software\anaconda3\condabin;}
+  env: ${PYTHON_ENV:}
 
 llm:
   enable: ${LLM_ENABLE:false}

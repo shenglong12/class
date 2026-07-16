@@ -10,7 +10,7 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     driverClassName: org.sqlite.JDBC
     druid:
-      url: jdbc:sqlite:C:/Users/NebYae/Desktop/class/app/data/sqlite/demo.sqlite?journal_mode=WAL&busy_timeout=5000
+      url: jdbc:sqlite:${SQLITE_PATH:../data/sqlite/demo.sqlite}?journal_mode=WAL&busy_timeout=5000
       username:
       password:
 

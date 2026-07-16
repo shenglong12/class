@@ -21,7 +21,10 @@ import java.util.Map;
 @Slf4j
 public class BaseTest {
 
-    private String pythonCmd = "D:\\software\\anaconda3\\envs\\charts;D:\\software\\anaconda3\\envs\\charts\\Library\\mingw-w64\\bin;D:\\software\\anaconda3\\envs\\charts\\Library\\usr\\bin;D:\\software\\anaconda3\\envs\\charts\\Library\\bin;D:\\software\\anaconda3\\envs\\charts\\Scripts;D:\\software\\anaconda3\\envs\\charts\\bin;D:\\software\\anaconda3\\condabin;";
+    // Python 环境 PATH，通过环境变量 PYTHON_ENV 配置，不同系统路径不同
+    // Windows 示例: D:\\software\\anaconda3\\envs\\charts;...（分号分隔）
+    // Linux 示例: /opt/anaconda3/envs/charts:...（冒号分隔）
+    private String pythonCmd = "";
 
     @Test
     public void test1() {
@@ -73,7 +76,8 @@ public class BaseTest {
     @Test
     public void test_pdf() throws Exception {
 
-        PDDocument document = PDDocument.load(new File("/Users/jiangfei/11.pdf"));
+        // 测试 PDF 解析，请替换为实际 PDF 文件路径
+        PDDocument document = PDDocument.load(new File("test.pdf"));
         int totalPages = document.getNumberOfPages();
 
         PDFTextStripper stripper = new PDFTextStripper();

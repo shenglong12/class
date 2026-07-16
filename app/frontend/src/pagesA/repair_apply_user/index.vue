@@ -197,17 +197,12 @@ async function submitRepair() {
         duration: 3000
       })
 
-      // 清空表单
+      // 清空表单，留在当前页，用户可以继续提交新的报修
       repairForm.value.building_enum_building_enum_id_1 = ''
       repairForm.value.classroom_info_classroom_info_id_1 = ''
       repairForm.value.content = ''
       repairForm.value.image_files = []
       uploadImages.value = []
-      
-      // 延迟返回上一页，让用户看到成功提示
-      setTimeout(() => {
-        uni.navigateBack()
-      }, 2000)
     } else {
       proxy.$cf.toast({ message: res.message || '提交失败', level: 'error' })
     }

@@ -16,6 +16,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -36,7 +37,7 @@ public class TokenService {
 
     protected static final long MILLIS_SECOND = 1000;
     protected static final long MILLIS_MINUTE = 60 * MILLIS_SECOND;
-    private static final Long MILLIS_MINUTE_TEN = 20 * 60 * 1000L;
+    private static final long MILLIS_ONE_DAY = 24 * 60 * 60 * 1000L;
 
     @Autowired
     private Cache cache;
@@ -80,7 +81,7 @@ public class TokenService {
     public void verifyToken(LoginUser loginUser) {
         long expireTime = loginUser.getExpireTime();
         long currentTime = System.currentTimeMillis();
-        if (expireTime - currentTime <= MILLIS_MINUTE_TEN) {
+        if (expireTime - currentTime <= MILLIS_ONE_DAY) {
             refreshToken(loginUser);
         }
     }
@@ -95,8 +96,12 @@ public class TokenService {
 
 
     private String createToken(Map<String, Object> claims) {
+        Date now = new Date();
+        Date expiration = new Date(now.getTime() + expireTime * MILLIS_MINUTE);
         String token = Jwts.builder()
                 .setClaims(claims)
+                .setIssuedAt(now)
+                .setExpiration(expiration)
                 .signWith(SignatureAlgorithm.HS512, secret).compact();
         return token;
     }

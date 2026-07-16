@@ -1,0 +1,11 @@
+{
+    "java.compile.nullAnalysis.mode": "automatic",
+    "java.jdt.ls.java.home": "d:/Project/class/demo/jdk1.8.0_431",
+    "java.configuration.runtimes": [
+        {
+            "name": "JavaSE-1.8",
+            "path": "d:/Project/class/demo/jdk1.8.0_431",
+            "default": true
+        }
+    ]
+}

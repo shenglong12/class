@@ -47,7 +47,9 @@ uploadPath/
 *.iws
 *.iml
 *.ipr
-.vscode/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
 .vscode-test/
 .factorypath
 .settings/

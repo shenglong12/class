@@ -35,23 +35,21 @@ class/
 
 ## 编译和运行
 
-### 设置环境（每次编译前必须执行）
+### 设置环境（每次编译前必须执行，从项目根目录运行）
 
 ```bash
-export JAVA_HOME="d:/Project/class/demo/jdk1.8.0_431"
+export JAVA_HOME="$(pwd)/demo/jdk1.8.0_431"
 export PATH="$JAVA_HOME/bin:$PATH"
 ```
 
-### 编译后端
+### 编译后端（从项目根目录运行）
 
 ```bash
 # 编译 app 模块
-cd app/backend
-d:/Project/class/demo/apache-maven-3.9.9/bin/mvn compile -q
+./demo/apache-maven-3.9.9/bin/mvn compile -q -f app/backend/pom.xml
 
 # 编译 admin 模块
-cd admin/backend
-d:/Project/class/demo/apache-maven-3.9.9/bin/mvn compile -q
+./demo/apache-maven-3.9.9/bin/mvn compile -q -f admin/backend/pom.xml
 
 # 或用 verify.bat
 ./verify.bat app      # 只编译 app

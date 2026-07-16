@@ -3,39 +3,17 @@
     "configurations": [
         {
             "type": "java",
-            "name": "MisAppBackendApplication",
-            "request": "launch",
-            "mainClass": "com.kuafu.MisAppBackendApplication",
-            "projectName": ""
-        },
-        {
-            "type": "java",
-            "name": "AdminApplication",
-            "request": "launch",
-            "mainClass": "com.kuafu.AdminApplication",
-            "projectName": "com.kuafu-app"
-        },
-        {
-            "type": "java",
             "name": "启动 app（端口 6789）",
             "request": "launch",
             "mainClass": "com.kuafu.MisAppBackendApplication",
-            "projectName": "app",
-            "cwd": "${workspaceFolder}/app/backend",
-            "env": {
-                "SQLITE_PATH": "../data/sqlite/demo.sqlite"
-            }
+            "projectName": "app"
         },
         {
             "type": "java",
             "name": "启动 admin（端口 8080）",
             "request": "launch",
             "mainClass": "com.kuafu.AdminApplication",
-            "projectName": "admin-app",
-            "cwd": "${workspaceFolder}/admin/backend",
-            "env": {
-                "SQLITE_PATH": "../../app/data/sqlite/demo.sqlite"
-            }
+            "projectName": "admin-app"
         }
     ]
 }

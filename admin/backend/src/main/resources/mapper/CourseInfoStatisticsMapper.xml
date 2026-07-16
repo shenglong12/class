@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kuafu.web.mapper.CourseInfoStatisticsMapper">
+
+    <resultMap id="course_info_statistic_11f06534_countStatistic0" type="com.kuafu.web.entity.CourseInfoStatistic11f06534Count$Statistic0">
+        <result property="classroomInfoClassroomInfoId1" column="classroom_info_classroom_info_id_1"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="course_info_statistic_43e99b84_countStatistic0" type="com.kuafu.web.entity.CourseInfoStatistic43e99b84Count$Statistic0">
+        <result property="classroomInfoClassroomInfoId1" column="classroom_info_classroom_info_id_1"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="course_info_statistic_6ba45514_countStatistic0" type="com.kuafu.web.entity.CourseInfoStatistic6ba45514Count$Statistic0">
+        <result property="classroomInfoClassroomInfoId1" column="classroom_info_classroom_info_id_1"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="course_info_start_date_datetime_statistic_799f21ac_countStatistic0" type="com.kuafu.web.entity.CourseInfoStartDateDatetimeStatistic799f21acCount$Statistic0">
+        <result property="startDate" column="start_date"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="course_info_start_date_datetime_statistic_40a54bd0_countStatistic0" type="com.kuafu.web.entity.CourseInfoStartDateDatetimeStatistic40a54bd0Count$Statistic0">
+        <result property="startDate" column="start_date"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="course_info_start_date_datetime_statistic_470d5ddb_countStatistic0" type="com.kuafu.web.entity.CourseInfoStartDateDatetimeStatistic470d5ddbCount$Statistic0">
+        <result property="startDate" column="start_date"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="course_info_end_date_datetime_statistic_9bbd1d33_countStatistic0" type="com.kuafu.web.entity.CourseInfoEndDateDatetimeStatistic9bbd1d33Count$Statistic0">
+        <result property="endDate" column="end_date"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="course_info_end_date_datetime_statistic_f4a5cdc7_countStatistic0" type="com.kuafu.web.entity.CourseInfoEndDateDatetimeStatisticF4a5cdc7Count$Statistic0">
+        <result property="endDate" column="end_date"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="course_info_end_date_datetime_statistic_9844a0b8_countStatistic0" type="com.kuafu.web.entity.CourseInfoEndDateDatetimeStatistic9844a0b8Count$Statistic0">
+        <result property="endDate" column="end_date"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+
+
+
+    <select id="course_info_statistic_11f06534_count" resultMap="course_info_statistic_11f06534_countStatistic0">
+        select
+                ci.classroom_info_classroom_info_id_1  
+                ,  count(ci.course_info_id)
+ as result_kf
+        FROM course_info ci
+
+        ${ew.customSqlSegment}
+        group by 
+            ci.classroom_info_classroom_info_id_1
+    </select>
+
+
+    <select id="course_info_statistic_43e99b84_count" resultMap="course_info_statistic_43e99b84_countStatistic0">
+        select
+                ci.classroom_info_classroom_info_id_1  
+                ,  count(ci.course_info_id)
+ as result_kf
+        FROM course_info ci
+
+        ${ew.customSqlSegment}
+        group by 
+            ci.classroom_info_classroom_info_id_1
+    </select>
+
+
+    <select id="course_info_statistic_6ba45514_count" resultMap="course_info_statistic_6ba45514_countStatistic0">
+        select
+                ci.classroom_info_classroom_info_id_1  
+                ,  count(ci.course_info_id)
+ as result_kf
+        FROM course_info ci
+
+        ${ew.customSqlSegment}
+        group by 
+            ci.classroom_info_classroom_info_id_1
+    </select>
+
+
+    <select id="course_info_start_date_datetime_statistic_799f21ac_count" resultMap="course_info_start_date_datetime_statistic_799f21ac_countStatistic0">
+        select
+                ci.start_date  
+                ,  count(ci.course_info_id)
+ as result_kf
+        FROM course_info ci
+
+        ${ew.customSqlSegment}
+        group by 
+            ci.start_date
+    </select>
+
+
+    <select id="course_info_start_date_datetime_statistic_40a54bd0_count" resultMap="course_info_start_date_datetime_statistic_40a54bd0_countStatistic0">
+        select
+                ci.start_date  
+                ,  count(ci.course_info_id)
+ as result_kf
+        FROM course_info ci
+
+        ${ew.customSqlSegment}
+        group by 
+            ci.start_date
+    </select>
+
+
+    <select id="course_info_start_date_datetime_statistic_470d5ddb_count" resultMap="course_info_start_date_datetime_statistic_470d5ddb_countStatistic0">
+        select
+                ci.start_date  
+                ,  count(ci.course_info_id)
+ as result_kf
+        FROM course_info ci
+
+        ${ew.customSqlSegment}
+        group by 
+            ci.start_date
+    </select>
+
+
+    <select id="course_info_end_date_datetime_statistic_9bbd1d33_count" resultMap="course_info_end_date_datetime_statistic_9bbd1d33_countStatistic0">
+        select
+                ci.end_date  
+                ,  count(ci.course_info_id)
+ as result_kf
+        FROM course_info ci
+
+        ${ew.customSqlSegment}
+        group by 
+            ci.end_date
+    </select>
+
+
+    <select id="course_info_end_date_datetime_statistic_f4a5cdc7_count" resultMap="course_info_end_date_datetime_statistic_f4a5cdc7_countStatistic0">
+        select
+                ci.end_date  
+                ,  count(ci.course_info_id)
+ as result_kf
+        FROM course_info ci
+
+        ${ew.customSqlSegment}
+        group by 
+            ci.end_date
+    </select>
+
+
+    <select id="course_info_end_date_datetime_statistic_9844a0b8_count" resultMap="course_info_end_date_datetime_statistic_9844a0b8_countStatistic0">
+        select
+                ci.end_date  
+                ,  count(ci.course_info_id)
+ as result_kf
+        FROM course_info ci
+
+        ${ew.customSqlSegment}
+        group by 
+            ci.end_date
+    </select>
+
+
+
+</mapper>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kuafu.web.mapper.ScanRecordAllMapper">
+
+
+        <select id="selectList" resultType="com.kuafu.web.entity.ScanRecordAll">
+            select
+            ui.college   ,
+            sr.user_info_user_info_id_1   ,
+            sr.building_name   ,
+            ui.role_enum_role_enum_id_1   ,
+            sr.scan_id   ,
+            sr.room_number   ,
+            ui.phone_number   ,
+            ui.registration_date   ,
+            ui.user_status_enum_user_status_enum_id_1   ,
+            sr.scan_time   ,
+            ui.student_id   ,
+            ui.password   ,
+            ui.major   ,
+            ui.name   
+            FROM scan_record sr
+                left join user_info ui on sr.user_info_user_info_id_1 = ui.user_info_id
+            ${ew.customSqlSegment}
+        </select>
+
+        <select id="selectPage" resultType="com.kuafu.web.entity.ScanRecordAll">
+            select
+            ui.college  ,
+            sr.user_info_user_info_id_1  ,
+            sr.building_name  ,
+            ui.role_enum_role_enum_id_1  ,
+            sr.scan_id  ,
+            sr.room_number  ,
+            ui.phone_number  ,
+            ui.registration_date  ,
+            ui.user_status_enum_user_status_enum_id_1  ,
+            sr.scan_time  ,
+            ui.student_id  ,
+            ui.password  ,
+            ui.major  ,
+            ui.name  
+            FROM scan_record sr
+                left join user_info ui on sr.user_info_user_info_id_1 = ui.user_info_id
+            ${ew.customSqlSegment}
+        </select>
+
+        <select id="selectById" resultType="com.kuafu.web.entity.ScanRecordAll">
+            select
+            ui.college  ,
+            sr.user_info_user_info_id_1  ,
+            sr.building_name  ,
+            ui.role_enum_role_enum_id_1  ,
+            sr.scan_id  ,
+            sr.room_number  ,
+            ui.phone_number  ,
+            ui.registration_date  ,
+            ui.user_status_enum_user_status_enum_id_1  ,
+            sr.scan_time  ,
+            ui.student_id  ,
+            ui.password  ,
+            ui.major  ,
+            ui.name  
+            FROM scan_record sr
+                left join user_info ui on sr.user_info_user_info_id_1 = ui.user_info_id
+            where sr.scan_id = #{id}
+        </select>
+
+
+</mapper>

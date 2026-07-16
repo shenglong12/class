@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kuafu.web.mapper.RepairOrderStatisticsMapper">
+
+    <resultMap id="repair_order_statistic_6e1b2cda_countStatistic0" type="com.kuafu.web.entity.RepairOrderStatistic6e1b2cdaCount$Statistic0">
+        <result property="userInfoUserInfoId1" column="user_info_user_info_id_1"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="repair_order_statistic_706e6dad_countStatistic0" type="com.kuafu.web.entity.RepairOrderStatistic706e6dadCount$Statistic0">
+        <result property="userInfoUserInfoId1" column="user_info_user_info_id_1"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="repair_order_statistic_dbd88f7e_countStatistic0" type="com.kuafu.web.entity.RepairOrderStatisticDbd88f7eCount$Statistic0">
+        <result property="userInfoUserInfoId1" column="user_info_user_info_id_1"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="repair_order_statistic_f027c1c8_countStatistic0" type="com.kuafu.web.entity.RepairOrderStatisticF027c1c8Count$Statistic0">
+        <result property="classroomInfoClassroomInfoId1" column="classroom_info_classroom_info_id_1"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="repair_order_statistic_6a0412be_countStatistic0" type="com.kuafu.web.entity.RepairOrderStatistic6a0412beCount$Statistic0">
+        <result property="classroomInfoClassroomInfoId1" column="classroom_info_classroom_info_id_1"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="repair_order_statistic_ab5cf58a_countStatistic0" type="com.kuafu.web.entity.RepairOrderStatisticAb5cf58aCount$Statistic0">
+        <result property="classroomInfoClassroomInfoId1" column="classroom_info_classroom_info_id_1"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="repair_order_statistic_e0ad78fb_countStatistic0" type="com.kuafu.web.entity.RepairOrderStatisticE0ad78fbCount$Statistic0">
+        <result property="repairStatusEnumRepairStatusEnumId1" column="repair_status_enum_repair_status_enum_id_1"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="repair_order_statistic_def7eca8_countStatistic0" type="com.kuafu.web.entity.RepairOrderStatisticDef7eca8Count$Statistic0">
+        <result property="repairStatusEnumRepairStatusEnumId1" column="repair_status_enum_repair_status_enum_id_1"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="repair_order_statistic_e9136ad8_countStatistic0" type="com.kuafu.web.entity.RepairOrderStatisticE9136ad8Count$Statistic0">
+        <result property="repairStatusEnumRepairStatusEnumId1" column="repair_status_enum_repair_status_enum_id_1"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="repair_order_repair_status_enum_repair_status_enum_id_1_status_statistic_4de288b4_countStatistic0" type="com.kuafu.web.entity.RepairOrderRepairStatusEnumRepairStatusEnumId1StatusStatistic4de288b4Count$Statistic0">
+        <result property="repairStatusEnumRepairStatusEnumId1" column="repair_status_enum_repair_status_enum_id_1"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="repair_order_repair_status_enum_repair_status_enum_id_1_status_statistic_86902e9b_countStatistic0" type="com.kuafu.web.entity.RepairOrderRepairStatusEnumRepairStatusEnumId1StatusStatistic86902e9bCount$Statistic0">
+        <result property="repairStatusEnumRepairStatusEnumId1" column="repair_status_enum_repair_status_enum_id_1"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="repair_order_repair_status_enum_repair_status_enum_id_1_status_statistic_ae2d02e5_countStatistic0" type="com.kuafu.web.entity.RepairOrderRepairStatusEnumRepairStatusEnumId1StatusStatisticAe2d02e5Count$Statistic0">
+        <result property="repairStatusEnumRepairStatusEnumId1" column="repair_status_enum_repair_status_enum_id_1"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="repair_order_create_time_datetime_statistic_426c9cba_countStatistic0" type="com.kuafu.web.entity.RepairOrderCreateTimeDatetimeStatistic426c9cbaCount$Statistic0">
+        <result property="createTime" column="create_time"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="repair_order_create_time_datetime_statistic_13a3f358_countStatistic0" type="com.kuafu.web.entity.RepairOrderCreateTimeDatetimeStatistic13a3f358Count$Statistic0">
+        <result property="createTime" column="create_time"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="repair_order_create_time_datetime_statistic_b1da4bdf_countStatistic0" type="com.kuafu.web.entity.RepairOrderCreateTimeDatetimeStatisticB1da4bdfCount$Statistic0">
+        <result property="createTime" column="create_time"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+
+
+
+    <select id="repair_order_statistic_6e1b2cda_count" resultMap="repair_order_statistic_6e1b2cda_countStatistic0">
+        select
+                ro.user_info_user_info_id_1  
+                ,  count(ro.repair_order_id)
+ as result_kf
+        FROM repair_order ro
+
+        ${ew.customSqlSegment}
+        group by 
+            ro.user_info_user_info_id_1
+    </select>
+
+
+    <select id="repair_order_statistic_706e6dad_count" resultMap="repair_order_statistic_706e6dad_countStatistic0">
+        select
+                ro.user_info_user_info_id_1  
+                ,  count(ro.repair_order_id)
+ as result_kf
+        FROM repair_order ro
+
+        ${ew.customSqlSegment}
+        group by 
+            ro.user_info_user_info_id_1
+    </select>
+
+
+    <select id="repair_order_statistic_dbd88f7e_count" resultMap="repair_order_statistic_dbd88f7e_countStatistic0">
+        select
+                ro.user_info_user_info_id_1  
+                ,  count(ro.repair_order_id)
+ as result_kf
+        FROM repair_order ro
+
+        ${ew.customSqlSegment}
+        group by 
+            ro.user_info_user_info_id_1
+    </select>
+
+
+    <select id="repair_order_statistic_f027c1c8_count" resultMap="repair_order_statistic_f027c1c8_countStatistic0">
+        select
+                ro.classroom_info_classroom_info_id_1  
+                ,  count(ro.repair_order_id)
+ as result_kf
+        FROM repair_order ro
+
+        ${ew.customSqlSegment}
+        group by 
+            ro.classroom_info_classroom_info_id_1
+    </select>
+
+
+    <select id="repair_order_statistic_6a0412be_count" resultMap="repair_order_statistic_6a0412be_countStatistic0">
+        select
+                ro.classroom_info_classroom_info_id_1  
+                ,  count(ro.repair_order_id)
+ as result_kf
+        FROM repair_order ro
+
+        ${ew.customSqlSegment}
+        group by 
+            ro.classroom_info_classroom_info_id_1
+    </select>
+
+
+    <select id="repair_order_statistic_ab5cf58a_count" resultMap="repair_order_statistic_ab5cf58a_countStatistic0">
+        select
+                ro.classroom_info_classroom_info_id_1  
+                ,  count(ro.repair_order_id)
+ as result_kf
+        FROM repair_order ro
+
+        ${ew.customSqlSegment}
+        group by 
+            ro.classroom_info_classroom_info_id_1
+    </select>
+
+
+    <select id="repair_order_statistic_e0ad78fb_count" resultMap="repair_order_statistic_e0ad78fb_countStatistic0">
+        select
+                ro.repair_status_enum_repair_status_enum_id_1  
+                ,  count(ro.repair_order_id)
+ as result_kf
+        FROM repair_order ro
+
+        ${ew.customSqlSegment}
+        group by 
+            ro.repair_status_enum_repair_status_enum_id_1
+    </select>
+
+
+    <select id="repair_order_statistic_def7eca8_count" resultMap="repair_order_statistic_def7eca8_countStatistic0">
+        select
+                ro.repair_status_enum_repair_status_enum_id_1  
+                ,  count(ro.repair_order_id)
+ as result_kf
+        FROM repair_order ro
+
+        ${ew.customSqlSegment}
+        group by 
+            ro.repair_status_enum_repair_status_enum_id_1
+    </select>
+
+
+    <select id="repair_order_statistic_e9136ad8_count" resultMap="repair_order_statistic_e9136ad8_countStatistic0">
+        select
+                ro.repair_status_enum_repair_status_enum_id_1  
+                ,  count(ro.repair_order_id)
+ as result_kf
+        FROM repair_order ro
+
+        ${ew.customSqlSegment}
+        group by 
+            ro.repair_status_enum_repair_status_enum_id_1
+    </select>
+
+
+    <select id="repair_order_repair_status_enum_repair_status_enum_id_1_status_statistic_4de288b4_count" resultMap="repair_order_repair_status_enum_repair_status_enum_id_1_status_statistic_4de288b4_countStatistic0">
+        select
+                ro.repair_status_enum_repair_status_enum_id_1  
+                ,  count(ro.repair_order_id)
+ as result_kf
+        FROM repair_order ro
+
+        ${ew.customSqlSegment}
+        group by 
+            ro.repair_status_enum_repair_status_enum_id_1
+    </select>
+
+
+    <select id="repair_order_repair_status_enum_repair_status_enum_id_1_status_statistic_86902e9b_count" resultMap="repair_order_repair_status_enum_repair_status_enum_id_1_status_statistic_86902e9b_countStatistic0">
+        select
+                ro.repair_status_enum_repair_status_enum_id_1  
+                ,  count(ro.repair_order_id)
+ as result_kf
+        FROM repair_order ro
+
+        ${ew.customSqlSegment}
+        group by 
+            ro.repair_status_enum_repair_status_enum_id_1
+    </select>
+
+
+    <select id="repair_order_repair_status_enum_repair_status_enum_id_1_status_statistic_ae2d02e5_count" resultMap="repair_order_repair_status_enum_repair_status_enum_id_1_status_statistic_ae2d02e5_countStatistic0">
+        select
+                ro.repair_status_enum_repair_status_enum_id_1  
+                ,  count(ro.repair_order_id)
+ as result_kf
+        FROM repair_order ro
+
+        ${ew.customSqlSegment}
+        group by 
+            ro.repair_status_enum_repair_status_enum_id_1
+    </select>
+
+
+    <select id="repair_order_create_time_datetime_statistic_426c9cba_count" resultMap="repair_order_create_time_datetime_statistic_426c9cba_countStatistic0">
+        select
+                ro.create_time  
+                ,  count(ro.repair_order_id)
+ as result_kf
+        FROM repair_order ro
+
+        ${ew.customSqlSegment}
+        group by 
+            ro.create_time
+    </select>
+
+
+    <select id="repair_order_create_time_datetime_statistic_13a3f358_count" resultMap="repair_order_create_time_datetime_statistic_13a3f358_countStatistic0">
+        select
+                ro.create_time  
+                ,  count(ro.repair_order_id)
+ as result_kf
+        FROM repair_order ro
+
+        ${ew.customSqlSegment}
+        group by 
+            ro.create_time
+    </select>
+
+
+    <select id="repair_order_create_time_datetime_statistic_b1da4bdf_count" resultMap="repair_order_create_time_datetime_statistic_b1da4bdf_countStatistic0">
+        select
+                ro.create_time  
+                ,  count(ro.repair_order_id)
+ as result_kf
+        FROM repair_order ro
+
+        ${ew.customSqlSegment}
+        group by 
+            ro.create_time
+    </select>
+
+
+
+</mapper>

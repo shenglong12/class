@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kuafu.web.mapper.RepairOrderMapper">
+
+    <resultMap id="selectListNewMap" type="com.kuafu.web.entity.RepairOrder">
+            <result property="repairOrderId" column="repair_order_id"/>
+            <result property="userInfoUserInfoId1" column="user_info_user_info_id_1"/>
+            <result property="classroomInfoClassroomInfoId1" column="classroom_info_classroom_info_id_1"/>
+            <result property="content" column="content"/>
+            <result property="repairStatusEnumRepairStatusEnumId1" column="repair_status_enum_repair_status_enum_id_1"/>
+            <result property="feedback" column="feedback"/>
+            <result property="createTime" column="create_time"/>
+            <result property="imageFilesResourceKey" column="image_files_resource_key"/>
+            <collection property="imageFiles" ofType="com.kuafu.common.domin.StaticResource">
+                <id property="resourceId" column="image_files_resource_id"/>
+                <result property="resourceName" column="image_files_resource_name"/>
+                <result property="resourcePath" column="image_files_resource_path"/>
+                <result property="relatedTableName" column="image_files_related_table_name"/>
+                <result property="relatedTableKey" column="image_files_related_table_key"/>
+                <result property="relateTableColumnName" column="image_files_relate_table_column_name"/>
+            </collection>
+    </resultMap>
+
+
+    <select id="selectList" resultMap="selectListNewMap">
+        select
+            ro.repair_order_id   ,
+            ro.user_info_user_info_id_1   ,
+            ro.classroom_info_classroom_info_id_1   ,
+            ro.content   ,
+            ro.repair_status_enum_repair_status_enum_id_1   ,
+            ro.feedback   ,
+            ro.create_time   ,
+            ro.image_files_resource_key   
+            ,image_files.resource_id as  image_files_resource_id
+            ,image_files.resource_name as image_files_resource_name
+            ,image_files.resource_path as  image_files_resource_path
+            ,image_files.related_table_name as  image_files_related_table_name
+            ,image_files.related_table_key as  image_files_related_table_key
+            ,image_files.relate_table_column_name as image_files_relate_table_column_name
+        FROM repair_order ro
+            left join
+        (select resource_id,
+        resource_name,
+        resource_path,
+        related_table_name,
+        related_table_key,
+        relate_table_column_name
+        from static_resources
+        where related_table_name='repair_order' and relate_table_column_name='image_files'
+        ) as image_files on image_files.related_table_key=ro.repair_order_id
+
+        ${ew.customSqlSegment}
+    </select>
+
+    <select id="selectPage" resultMap="selectListNewMap">
+        select
+        ro.repair_order_id   ,
+        ro.user_info_user_info_id_1   ,
+        ro.classroom_info_classroom_info_id_1   ,
+        ro.content   ,
+        ro.repair_status_enum_repair_status_enum_id_1   ,
+        ro.feedback   ,
+        ro.create_time   ,
+        ro.image_files_resource_key   
+        ,image_files.resource_id as  image_files_resource_id
+        ,image_files.resource_name as image_files_resource_name
+        ,image_files.resource_path as  image_files_resource_path
+        ,image_files.related_table_name as  image_files_related_table_name
+        ,image_files.related_table_key as  image_files_related_table_key
+        ,image_files.relate_table_column_name as image_files_relate_table_column_name
+        FROM repair_order ro
+        left join
+        (select resource_id,
+        resource_name,
+        resource_path,
+        related_table_name,
+        related_table_key,
+        relate_table_column_name
+        from static_resources
+        where related_table_name='repair_order' and relate_table_column_name='image_files'
+        ) as image_files on image_files.related_table_key=ro.repair_order_id
+
+        ${ew.customSqlSegment}
+    </select>
+
+    <select id="selectById" resultMap="selectListNewMap">
+        select
+        ro.repair_order_id   ,
+        ro.user_info_user_info_id_1   ,
+        ro.classroom_info_classroom_info_id_1   ,
+        ro.content   ,
+        ro.repair_status_enum_repair_status_enum_id_1   ,
+        ro.feedback   ,
+        ro.create_time   ,
+        ro.image_files_resource_key   
+        ,image_files.resource_id as  image_files_resource_id
+        ,image_files.resource_name as image_files_resource_name
+        ,image_files.resource_path as  image_files_resource_path
+        ,image_files.related_table_name as  image_files_related_table_name
+        ,image_files.related_table_key as  image_files_related_table_key
+        ,image_files.relate_table_column_name as image_files_relate_table_column_name
+        FROM repair_order ro
+        left join
+        (select resource_id,
+        resource_name,
+        resource_path,
+        related_table_name,
+        related_table_key,
+        relate_table_column_name
+        from static_resources
+        where related_table_name='repair_order' and relate_table_column_name='image_files'
+        ) as image_files on image_files.related_table_key=ro.repair_order_id
+
+
+        where ro.repair_order_id = #{id}
+    </select>
+
+</mapper>

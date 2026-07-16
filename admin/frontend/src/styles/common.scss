@@ -1,0 +1,11 @@
+.search-form-inline {
+  // .el-form-item__label {
+  //   display: none;
+  // } 
+  .el-input {
+    --el-input-width: 180px;
+  }
+   .el-select {
+    --el-select-width: 180px;
+  }
+}

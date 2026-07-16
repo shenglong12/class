@@ -1,0 +1,200 @@
+{
+    "easycom": {
+        "autoscan": true,
+        "custom": {
+            "^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue",
+"fui-(.*)": "firstui-uni/firstui/fui-$1/fui-$1.vue","^base-(.*)": "@/components/base-$1.vue"        }
+    },
+    "pages": [{
+        "path": "pages/login/index",
+        "style":  {
+                "navigationBarTitleText": "",
+                "navigationStyle": "default",
+"enableShareAppMessage": true,
+"enableShareTimeline": true
+            }
+    }, {
+        "path": "pages/web_view/index",
+        "style":  {
+                "navigationBarTitleText": "",
+                "navigationStyle": "default",
+"enableShareAppMessage": true,
+"enableShareTimeline": true
+            }
+    }] ,
+"subPackages":[{"root": "pagesA",
+"pages":[{
+        "path": "admin_home/index",
+        "style":  {
+                "navigationBarTitleText": "",
+                "navigationStyle": "default",
+"enableShareAppMessage": true,
+"enableShareTimeline": true
+            }
+    }, {
+        "path": "background_upload_admin/index",
+        "style":  {
+                "navigationBarTitleText": "",
+                "navigationStyle": "default",
+"enableShareAppMessage": true,
+"enableShareTimeline": true
+            }
+    }, {
+        "path": "booking_audit_admin/index",
+        "style":  {
+                "navigationBarTitleText": "",
+                "navigationStyle": "default",
+"enableShareAppMessage": true,
+"enableShareTimeline": true
+            }
+    }, {
+        "path": "booking_detail_user/index",
+        "style":  {
+                "navigationBarTitleText": "",
+                "navigationStyle": "default",
+"enableShareAppMessage": true,
+"enableShareTimeline": true
+            }
+    }, {
+        "path": "booking_edit_admin/index",
+        "style":  {
+                "navigationBarTitleText": "",
+                "navigationStyle": "default",
+"enableShareAppMessage": true,
+"enableShareTimeline": true
+            }
+    }, {
+        "path": "booking_user/index",
+        "style":  {
+                "navigationBarTitleText": "",
+                "navigationStyle": "default",
+"enableShareAppMessage": true,
+"enableShareTimeline": true
+            }
+    }, {
+        "path": "classroom_detail/index",
+        "style":  {
+                "navigationBarTitleText": "",
+                "navigationStyle": "default",
+"enableShareAppMessage": true,
+"enableShareTimeline": true
+            }
+    }, {
+        "path": "course_detail/index",
+        "style":  {
+                "navigationBarTitleText": "",
+                "navigationStyle": "default",
+"enableShareAppMessage": true,
+"enableShareTimeline": true
+            }
+    }, {
+        "path": "course_edit_admin/index",
+        "style":  {
+                "navigationBarTitleText": "",
+                "navigationStyle": "default",
+"enableShareAppMessage": true,
+"enableShareTimeline": true
+            }
+    }, {
+        "path": "home_user/index",
+        "style":  {
+                "navigationBarTitleText": "",
+                "navigationStyle": "default",
+"enableShareAppMessage": true,
+"enableShareTimeline": true
+            }
+    }, {
+        "path": "profile_user/index",
+        "style":  {
+                "navigationBarTitleText": "",
+                "navigationStyle": "default",
+"enableShareAppMessage": true,
+"enableShareTimeline": true
+            }
+    }, {
+        "path": "query_user/index",
+        "style":  {
+                "navigationBarTitleText": "",
+                "navigationStyle": "default",
+"enableShareAppMessage": true,
+"enableShareTimeline": true
+            }
+    }, {
+        "path": "register/index",
+        "style":  {
+                "navigationBarTitleText": "",
+                "navigationStyle": "default",
+"enableShareAppMessage": true,
+"enableShareTimeline": true
+            }
+    }, {
+        "path": "repair_apply_user/index",
+        "style":  {
+                "navigationBarTitleText": "",
+                "navigationStyle": "default",
+"enableShareAppMessage": true,
+"enableShareTimeline": true
+            }
+    }, {
+        "path": "repair_detail_user/index",
+        "style":  {
+                "navigationBarTitleText": "",
+                "navigationStyle": "default",
+"enableShareAppMessage": true,
+"enableShareTimeline": true
+            }
+    }, {
+        "path": "repair_edit_admin/index",
+        "style":  {
+                "navigationBarTitleText": "",
+                "navigationStyle": "default",
+"enableShareAppMessage": true,
+"enableShareTimeline": true
+            }
+    }, {
+        "path": "repair_manage_admin/index",
+        "style":  {
+                "navigationBarTitleText": "",
+                "navigationStyle": "default",
+"enableShareAppMessage": true,
+"enableShareTimeline": true
+            }
+    }, {
+        "path": "room_manage_admin/index",
+        "style":  {
+                "navigationBarTitleText": "",
+                "navigationStyle": "default",
+"enableShareAppMessage": true,
+"enableShareTimeline": true
+            }
+    }, {
+        "path": "schedule_manage_admin/index",
+        "style":  {
+                "navigationBarTitleText": "",
+                "navigationStyle": "default",
+"enableShareAppMessage": true,
+"enableShareTimeline": true
+            }
+    }, {
+        "path": "user_edit_admin/index",
+        "style":  {
+                "navigationBarTitleText": "",
+                "navigationStyle": "default",
+"enableShareAppMessage": true,
+"enableShareTimeline": true
+            }
+    }, {
+        "path": "user_manage_admin/index",
+        "style":  {
+                "navigationBarTitleText": "",
+                "navigationStyle": "default",
+"enableShareAppMessage": true,
+"enableShareTimeline": true
+            }
+    }]}],    "globalStyle": {
+        "navigationBarTextStyle": "black",
+        "navigationBarTitleText": "uni-app",
+        "navigationBarBackgroundColor": "#F8F8F8",
+        "backgroundColor": "#F8F8F8"
+    }
+}

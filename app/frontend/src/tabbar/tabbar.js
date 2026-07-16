@@ -1,0 +1,31 @@
+export const dynamicTabBars =[  {
+    url: "/pagesA/home_user/index",
+    text: "home_user",
+    icon: "https://www.codeflying.net/preview/icon/home.png",
+    onicon: "https://www.codeflying.net/preview/icon/select_home.png",
+    title: "首页"
+  },   {
+    url: "/pagesA/query_user/index",
+    text: "query_user",
+    icon: "https://www.codeflying.net/preview/icon/nav.png",
+    onicon: "https://www.codeflying.net/preview/icon/select_nav.png",
+    title: "查询"
+  },   {
+    url: "/pagesA/repair_apply_user/index",
+    text: "repair_apply_user",
+    icon: "https://www.codeflying.net/preview/icon/nav.png",
+    onicon: "https://www.codeflying.net/preview/icon/select_nav.png",
+    title: "报修"
+  },   {
+    url: "/pagesA/booking_user/index",
+    text: "booking_user",
+    icon: "https://www.codeflying.net/preview/icon/notes.png",
+    onicon: "https://www.codeflying.net/preview/icon/select_notes.png",
+    title: "预约"
+  },   {
+    url: "/pagesA/profile_user/index",
+    text: "profile_user",
+    icon: "https://www.codeflying.net/preview/icon/contact.png",
+    onicon: "https://www.codeflying.net/preview/icon/select_contact.png",
+    title: "我的"
+  }]

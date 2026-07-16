@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kuafu.web.mapper.BookingInfoAllMapper">
+
+
+        <select id="selectList" resultType="com.kuafu.web.entity.BookingInfoAll">
+            select
+            ui.college   ,
+            bi.user_info_user_info_id_1   ,
+            bi.create_time   ,
+            bi.purpose   ,
+            ui.role_enum_role_enum_id_1   ,
+            ci.room_number   ,
+            ci.qr_code_path   ,
+            bi.booking_info_id   ,
+            ui.phone_number   ,
+            bi.end_time   ,
+            bse.status_name   ,
+            ui.registration_date   ,
+            bi.booking_date   ,
+            bi.start_time   ,
+            ui.user_status_enum_user_status_enum_id_1   ,
+            ui.student_id   ,
+            ui.password   ,
+            ui.major   ,
+            ci.building_enum_building_enum_id_1   ,
+            bi.booking_status_enum_booking_status_enum_id_1   ,
+            ui.name   ,
+            bi.classroom_info_classroom_info_id_1   ,
+            bi.time_period   
+            FROM booking_info bi
+                left join user_info ui on bi.user_info_user_info_id_1 = ui.user_info_id
+                left join classroom_info ci on bi.classroom_info_classroom_info_id_1 = ci.classroom_info_id
+                left join booking_status_enum bse on bi.booking_status_enum_booking_status_enum_id_1 = bse.booking_status_enum_id
+            ${ew.customSqlSegment}
+        </select>
+
+        <select id="selectPage" resultType="com.kuafu.web.entity.BookingInfoAll">
+            select
+            ui.college  ,
+            bi.user_info_user_info_id_1  ,
+            bi.create_time  ,
+            bi.purpose  ,
+            ui.role_enum_role_enum_id_1  ,
+            ci.room_number  ,
+            ci.qr_code_path  ,
+            bi.booking_info_id  ,
+            ui.phone_number  ,
+            bi.end_time  ,
+            bse.status_name  ,
+            ui.registration_date  ,
+            bi.booking_date  ,
+            bi.start_time  ,
+            ui.user_status_enum_user_status_enum_id_1  ,
+            ui.student_id  ,
+            ui.password  ,
+            ui.major  ,
+            ci.building_enum_building_enum_id_1  ,
+            bi.booking_status_enum_booking_status_enum_id_1  ,
+            ui.name  ,
+            bi.classroom_info_classroom_info_id_1  ,
+            bi.time_period  
+            FROM booking_info bi
+                left join user_info ui on bi.user_info_user_info_id_1 = ui.user_info_id
+                left join classroom_info ci on bi.classroom_info_classroom_info_id_1 = ci.classroom_info_id
+                left join booking_status_enum bse on bi.booking_status_enum_booking_status_enum_id_1 = bse.booking_status_enum_id
+            ${ew.customSqlSegment}
+        </select>
+
+        <select id="selectById" resultType="com.kuafu.web.entity.BookingInfoAll">
+            select
+            ui.college  ,
+            bi.user_info_user_info_id_1  ,
+            bi.create_time  ,
+            bi.purpose  ,
+            ui.role_enum_role_enum_id_1  ,
+            ci.room_number  ,
+            ci.qr_code_path  ,
+            bi.booking_info_id  ,
+            ui.phone_number  ,
+            bi.end_time  ,
+            bse.status_name  ,
+            ui.registration_date  ,
+            bi.booking_date  ,
+            bi.start_time  ,
+            ui.user_status_enum_user_status_enum_id_1  ,
+            ui.student_id  ,
+            ui.password  ,
+            ui.major  ,
+            ci.building_enum_building_enum_id_1  ,
+            bi.booking_status_enum_booking_status_enum_id_1  ,
+            ui.name  ,
+            bi.classroom_info_classroom_info_id_1  ,
+            bi.time_period  
+            FROM booking_info bi
+                left join user_info ui on bi.user_info_user_info_id_1 = ui.user_info_id
+                left join classroom_info ci on bi.classroom_info_classroom_info_id_1 = ci.classroom_info_id
+                left join booking_status_enum bse on bi.booking_status_enum_booking_status_enum_id_1 = bse.booking_status_enum_id
+            where bi.booking_info_id = #{id}
+        </select>
+
+
+</mapper>

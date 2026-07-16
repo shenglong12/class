@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kuafu.web.mapper.RepairStatusEnumStatisticsMapper">
+
+    <resultMap id="repair_status_enum_repair_status_enum_id_status_statistic_3331a20c_countStatistic0" type="com.kuafu.web.entity.RepairStatusEnumRepairStatusEnumIdStatusStatistic3331a20cCount$Statistic0">
+        <result property="repairStatusEnumId" column="repair_status_enum_id"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="repair_status_enum_repair_status_enum_id_status_statistic_f7fab3d8_countStatistic0" type="com.kuafu.web.entity.RepairStatusEnumRepairStatusEnumIdStatusStatisticF7fab3d8Count$Statistic0">
+        <result property="repairStatusEnumId" column="repair_status_enum_id"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="repair_status_enum_repair_status_enum_id_status_statistic_20ddc808_countStatistic0" type="com.kuafu.web.entity.RepairStatusEnumRepairStatusEnumIdStatusStatistic20ddc808Count$Statistic0">
+        <result property="repairStatusEnumId" column="repair_status_enum_id"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="repair_status_enum_status_name_status_statistic_e2385888_countStatistic0" type="com.kuafu.web.entity.RepairStatusEnumStatusNameStatusStatisticE2385888Count$Statistic0">
+        <result property="statusName" column="status_name"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="repair_status_enum_status_name_status_statistic_b8607948_countStatistic0" type="com.kuafu.web.entity.RepairStatusEnumStatusNameStatusStatisticB8607948Count$Statistic0">
+        <result property="statusName" column="status_name"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="repair_status_enum_status_name_status_statistic_5735d9aa_countStatistic0" type="com.kuafu.web.entity.RepairStatusEnumStatusNameStatusStatistic5735d9aaCount$Statistic0">
+        <result property="statusName" column="status_name"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+
+
+
+    <select id="repair_status_enum_repair_status_enum_id_status_statistic_3331a20c_count" resultMap="repair_status_enum_repair_status_enum_id_status_statistic_3331a20c_countStatistic0">
+        select
+                rse.repair_status_enum_id  
+                ,  count(rse.repair_status_enum_id)
+ as result_kf
+        FROM repair_status_enum rse
+
+        ${ew.customSqlSegment}
+        group by 
+            rse.repair_status_enum_id
+    </select>
+
+
+    <select id="repair_status_enum_repair_status_enum_id_status_statistic_f7fab3d8_count" resultMap="repair_status_enum_repair_status_enum_id_status_statistic_f7fab3d8_countStatistic0">
+        select
+                rse.repair_status_enum_id  
+                ,  count(rse.repair_status_enum_id)
+ as result_kf
+        FROM repair_status_enum rse
+
+        ${ew.customSqlSegment}
+        group by 
+            rse.repair_status_enum_id
+    </select>
+
+
+    <select id="repair_status_enum_repair_status_enum_id_status_statistic_20ddc808_count" resultMap="repair_status_enum_repair_status_enum_id_status_statistic_20ddc808_countStatistic0">
+        select
+                rse.repair_status_enum_id  
+                ,  count(rse.repair_status_enum_id)
+ as result_kf
+        FROM repair_status_enum rse
+
+        ${ew.customSqlSegment}
+        group by 
+            rse.repair_status_enum_id
+    </select>
+
+
+    <select id="repair_status_enum_status_name_status_statistic_e2385888_count" resultMap="repair_status_enum_status_name_status_statistic_e2385888_countStatistic0">
+        select
+                rse.status_name  
+                ,  count(rse.repair_status_enum_id)
+ as result_kf
+        FROM repair_status_enum rse
+
+        ${ew.customSqlSegment}
+        group by 
+            rse.status_name
+    </select>
+
+
+    <select id="repair_status_enum_status_name_status_statistic_b8607948_count" resultMap="repair_status_enum_status_name_status_statistic_b8607948_countStatistic0">
+        select
+                rse.status_name  
+                ,  count(rse.repair_status_enum_id)
+ as result_kf
+        FROM repair_status_enum rse
+
+        ${ew.customSqlSegment}
+        group by 
+            rse.status_name
+    </select>
+
+
+    <select id="repair_status_enum_status_name_status_statistic_5735d9aa_count" resultMap="repair_status_enum_status_name_status_statistic_5735d9aa_countStatistic0">
+        select
+                rse.status_name  
+                ,  count(rse.repair_status_enum_id)
+ as result_kf
+        FROM repair_status_enum rse
+
+        ${ew.customSqlSegment}
+        group by 
+            rse.status_name
+    </select>
+
+
+
+</mapper>

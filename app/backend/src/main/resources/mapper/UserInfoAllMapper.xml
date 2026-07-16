@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kuafu.web.mapper.UserInfoAllMapper">
+    <sql id="user_info_list_sql">
+        select
+        ui.college   ,
+        re.role_name   ,
+        ui.password   ,
+        ui.registration_date   ,
+        ui.major   ,
+        use.status_name   ,
+        ui.name   ,
+        ui.student_id   ,
+        ui.role_enum_role_enum_id_1   ,
+        ui.user_status_enum_user_status_enum_id_1   ,
+        ui.phone_number   ,
+        ui.user_info_id   
+
+
+        FROM user_info ui
+        left join role_enum re on ui.role_enum_role_enum_id_1 = re.role_enum_id
+        left join user_status_enum use on ui.user_status_enum_user_status_enum_id_1 = use.user_status_enum_id
+
+        </sql>
+
+        <resultMap id="selectListNewMap" type="com.kuafu.web.entity.UserInfoAll">
+
+        <result property="college" column="college"/>
+
+        <result property="roleName" column="role_name"/>
+
+        <result property="password" column="password"/>
+
+        <result property="registrationDate" column="registration_date"/>
+
+        <result property="major" column="major"/>
+
+        <result property="statusName" column="status_name"/>
+
+        <result property="name" column="name"/>
+
+        <result property="studentId" column="student_id"/>
+
+        <result property="roleEnumRoleEnumId1" column="role_enum_role_enum_id_1"/>
+
+        <result property="userStatusEnumUserStatusEnumId1" column="user_status_enum_user_status_enum_id_1"/>
+
+        <result property="phoneNumber" column="phone_number"/>
+
+        <result property="userInfoId" column="user_info_id"/>
+
+
+
+
+        </resultMap>
+
+<select id="selectListNew"  resultMap="selectListNewMap">
+select
+ui.college   ,
+re.role_name   ,
+ui.password   ,
+ui.registration_date   ,
+ui.major   ,
+use.status_name   ,
+ui.name   ,
+ui.student_id   ,
+ui.role_enum_role_enum_id_1   ,
+ui.user_status_enum_user_status_enum_id_1   ,
+ui.phone_number   ,
+ui.user_info_id   
+
+
+
+        FROM user_info ui
+        left join
+
+        role_enum
+
+        re on ui.role_enum_role_enum_id_1 = re.role_enum_id
+        left join
+
+        user_status_enum
+
+        use on ui.user_status_enum_user_status_enum_id_1 = use.user_status_enum_id
+
+
+
+${ew.customSqlSegment}
+        </select>
+
+<select id="selectList" resultType="com.kuafu.web.entity.UserInfoAll">
+select
+ui.college   ,
+re.role_name   ,
+ui.password   ,
+ui.registration_date   ,
+ui.major   ,
+use.status_name   ,
+ui.name   ,
+ui.student_id   ,
+ui.role_enum_role_enum_id_1   ,
+ui.user_status_enum_user_status_enum_id_1   ,
+ui.phone_number   ,
+ui.user_info_id   
+
+
+        FROM user_info ui
+        left join role_enum re on ui.role_enum_role_enum_id_1 = re.role_enum_id
+        left join user_status_enum use on ui.user_status_enum_user_status_enum_id_1 = use.user_status_enum_id
+
+
+${ew.customSqlSegment}
+        </select>
+
+<select id="selectPage" resultType="com.kuafu.web.entity.UserInfoAll">
+select
+ui.college  ,
+re.role_name  ,
+ui.password  ,
+ui.registration_date  ,
+ui.major  ,
+use.status_name  ,
+ui.name  ,
+ui.student_id  ,
+ui.role_enum_role_enum_id_1  ,
+ui.user_status_enum_user_status_enum_id_1  ,
+ui.phone_number  ,
+ui.user_info_id  
+
+
+
+        FROM user_info ui
+        left join role_enum re on ui.role_enum_role_enum_id_1 = re.role_enum_id
+        left join user_status_enum use on ui.user_status_enum_user_status_enum_id_1 = use.user_status_enum_id
+
+
+
+
+
+${ew.customSqlSegment}
+        </select>
+
+<select id="selectById" resultType="com.kuafu.web.entity.UserInfoAll">
+select
+ui.college  ,
+re.role_name  ,
+ui.password  ,
+ui.registration_date  ,
+ui.major  ,
+use.status_name  ,
+ui.name  ,
+ui.student_id  ,
+ui.role_enum_role_enum_id_1  ,
+ui.user_status_enum_user_status_enum_id_1  ,
+ui.phone_number  ,
+ui.user_info_id  
+
+
+        FROM user_info ui
+        left join role_enum re on ui.role_enum_role_enum_id_1 = re.role_enum_id
+        left join user_status_enum use on ui.user_status_enum_user_status_enum_id_1 = use.user_status_enum_id
+
+
+
+        where ui.user_info_id = #{id}
+        </select>
+
+<select id="selectCount" resultType="java.lang.Long">
+select
+count(*)
+
+
+
+FROM user_info ui
+left join role_enum re on ui.role_enum_role_enum_id_1 = re.role_enum_id
+left join user_status_enum use on ui.user_status_enum_user_status_enum_id_1 = use.user_status_enum_id
+
+
+
+${ew.customSqlSegment}
+
+
+        </select>
+
+        </mapper>

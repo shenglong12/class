@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kuafu.web.mapper.BookingInfoStatisticsMapper">
+
+    <resultMap id="booking_info_statistic_1126e6b6_countStatistic0" type="com.kuafu.web.entity.BookingInfoStatistic1126e6b6Count$Statistic0">
+        <result property="userInfoUserInfoId1" column="user_info_user_info_id_1"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="booking_info_statistic_4043b0cb_countStatistic0" type="com.kuafu.web.entity.BookingInfoStatistic4043b0cbCount$Statistic0">
+        <result property="userInfoUserInfoId1" column="user_info_user_info_id_1"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="booking_info_statistic_1853f55c_countStatistic0" type="com.kuafu.web.entity.BookingInfoStatistic1853f55cCount$Statistic0">
+        <result property="userInfoUserInfoId1" column="user_info_user_info_id_1"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="booking_info_statistic_d40776f0_countStatistic0" type="com.kuafu.web.entity.BookingInfoStatisticD40776f0Count$Statistic0">
+        <result property="classroomInfoClassroomInfoId1" column="classroom_info_classroom_info_id_1"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="booking_info_statistic_548dd610_countStatistic0" type="com.kuafu.web.entity.BookingInfoStatistic548dd610Count$Statistic0">
+        <result property="classroomInfoClassroomInfoId1" column="classroom_info_classroom_info_id_1"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="booking_info_statistic_44542338_countStatistic0" type="com.kuafu.web.entity.BookingInfoStatistic44542338Count$Statistic0">
+        <result property="classroomInfoClassroomInfoId1" column="classroom_info_classroom_info_id_1"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="booking_info_statistic_aff5634d_countStatistic0" type="com.kuafu.web.entity.BookingInfoStatisticAff5634dCount$Statistic0">
+        <result property="bookingStatusEnumBookingStatusEnumId1" column="booking_status_enum_booking_status_enum_id_1"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="booking_info_statistic_17a6caf6_countStatistic0" type="com.kuafu.web.entity.BookingInfoStatistic17a6caf6Count$Statistic0">
+        <result property="bookingStatusEnumBookingStatusEnumId1" column="booking_status_enum_booking_status_enum_id_1"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="booking_info_statistic_c980a12e_countStatistic0" type="com.kuafu.web.entity.BookingInfoStatisticC980a12eCount$Statistic0">
+        <result property="bookingStatusEnumBookingStatusEnumId1" column="booking_status_enum_booking_status_enum_id_1"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="booking_info_booking_date_datetime_statistic_eae3f8e9_countStatistic0" type="com.kuafu.web.entity.BookingInfoBookingDateDatetimeStatisticEae3f8e9Count$Statistic0">
+        <result property="bookingDate" column="booking_date"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="booking_info_booking_date_datetime_statistic_e87a89ae_countStatistic0" type="com.kuafu.web.entity.BookingInfoBookingDateDatetimeStatisticE87a89aeCount$Statistic0">
+        <result property="bookingDate" column="booking_date"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="booking_info_booking_date_datetime_statistic_674e8a71_countStatistic0" type="com.kuafu.web.entity.BookingInfoBookingDateDatetimeStatistic674e8a71Count$Statistic0">
+        <result property="bookingDate" column="booking_date"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="booking_info_booking_status_enum_booking_status_enum_id_1_status_statistic_e8bf0f4a_countStatistic0" type="com.kuafu.web.entity.BookingInfoBookingStatusEnumBookingStatusEnumId1StatusStatisticE8bf0f4aCount$Statistic0">
+        <result property="bookingStatusEnumBookingStatusEnumId1" column="booking_status_enum_booking_status_enum_id_1"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="booking_info_booking_status_enum_booking_status_enum_id_1_status_statistic_3920cb9d_countStatistic0" type="com.kuafu.web.entity.BookingInfoBookingStatusEnumBookingStatusEnumId1StatusStatistic3920cb9dCount$Statistic0">
+        <result property="bookingStatusEnumBookingStatusEnumId1" column="booking_status_enum_booking_status_enum_id_1"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="booking_info_booking_status_enum_booking_status_enum_id_1_status_statistic_abe486bb_countStatistic0" type="com.kuafu.web.entity.BookingInfoBookingStatusEnumBookingStatusEnumId1StatusStatisticAbe486bbCount$Statistic0">
+        <result property="bookingStatusEnumBookingStatusEnumId1" column="booking_status_enum_booking_status_enum_id_1"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="booking_info_create_time_datetime_statistic_deef36d9_countStatistic0" type="com.kuafu.web.entity.BookingInfoCreateTimeDatetimeStatisticDeef36d9Count$Statistic0">
+        <result property="createTime" column="create_time"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="booking_info_create_time_datetime_statistic_198072fd_countStatistic0" type="com.kuafu.web.entity.BookingInfoCreateTimeDatetimeStatistic198072fdCount$Statistic0">
+        <result property="createTime" column="create_time"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="booking_info_create_time_datetime_statistic_25bff35e_countStatistic0" type="com.kuafu.web.entity.BookingInfoCreateTimeDatetimeStatistic25bff35eCount$Statistic0">
+        <result property="createTime" column="create_time"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="booking_info_start_time_datetime_statistic_f9865a97_countStatistic0" type="com.kuafu.web.entity.BookingInfoStartTimeDatetimeStatisticF9865a97Count$Statistic0">
+        <result property="startTime" column="start_time"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="booking_info_start_time_datetime_statistic_8d1d71fe_countStatistic0" type="com.kuafu.web.entity.BookingInfoStartTimeDatetimeStatistic8d1d71feCount$Statistic0">
+        <result property="startTime" column="start_time"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="booking_info_start_time_datetime_statistic_937c1379_countStatistic0" type="com.kuafu.web.entity.BookingInfoStartTimeDatetimeStatistic937c1379Count$Statistic0">
+        <result property="startTime" column="start_time"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="booking_info_end_time_datetime_statistic_2492f29a_countStatistic0" type="com.kuafu.web.entity.BookingInfoEndTimeDatetimeStatistic2492f29aCount$Statistic0">
+        <result property="endTime" column="end_time"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="booking_info_end_time_datetime_statistic_e6adae60_countStatistic0" type="com.kuafu.web.entity.BookingInfoEndTimeDatetimeStatisticE6adae60Count$Statistic0">
+        <result property="endTime" column="end_time"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="booking_info_end_time_datetime_statistic_d22436f5_countStatistic0" type="com.kuafu.web.entity.BookingInfoEndTimeDatetimeStatisticD22436f5Count$Statistic0">
+        <result property="endTime" column="end_time"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+
+
+
+    <select id="booking_info_statistic_1126e6b6_count" resultMap="booking_info_statistic_1126e6b6_countStatistic0">
+        select
+                bi.user_info_user_info_id_1  
+                ,  count(bi.booking_info_id)
+ as result_kf
+        FROM booking_info bi
+
+        ${ew.customSqlSegment}
+        group by 
+            bi.user_info_user_info_id_1
+    </select>
+
+
+    <select id="booking_info_statistic_4043b0cb_count" resultMap="booking_info_statistic_4043b0cb_countStatistic0">
+        select
+                bi.user_info_user_info_id_1  
+                ,  count(bi.booking_info_id)
+ as result_kf
+        FROM booking_info bi
+
+        ${ew.customSqlSegment}
+        group by 
+            bi.user_info_user_info_id_1
+    </select>
+
+
+    <select id="booking_info_statistic_1853f55c_count" resultMap="booking_info_statistic_1853f55c_countStatistic0">
+        select
+                bi.user_info_user_info_id_1  
+                ,  count(bi.booking_info_id)
+ as result_kf
+        FROM booking_info bi
+
+        ${ew.customSqlSegment}
+        group by 
+            bi.user_info_user_info_id_1
+    </select>
+
+
+    <select id="booking_info_statistic_d40776f0_count" resultMap="booking_info_statistic_d40776f0_countStatistic0">
+        select
+                bi.classroom_info_classroom_info_id_1  
+                ,  count(bi.booking_info_id)
+ as result_kf
+        FROM booking_info bi
+
+        ${ew.customSqlSegment}
+        group by 
+            bi.classroom_info_classroom_info_id_1
+    </select>
+
+
+    <select id="booking_info_statistic_548dd610_count" resultMap="booking_info_statistic_548dd610_countStatistic0">
+        select
+                bi.classroom_info_classroom_info_id_1  
+                ,  count(bi.booking_info_id)
+ as result_kf
+        FROM booking_info bi
+
+        ${ew.customSqlSegment}
+        group by 
+            bi.classroom_info_classroom_info_id_1
+    </select>
+
+
+    <select id="booking_info_statistic_44542338_count" resultMap="booking_info_statistic_44542338_countStatistic0">
+        select
+                bi.classroom_info_classroom_info_id_1  
+                ,  count(bi.booking_info_id)
+ as result_kf
+        FROM booking_info bi
+
+        ${ew.customSqlSegment}
+        group by 
+            bi.classroom_info_classroom_info_id_1
+    </select>
+
+
+    <select id="booking_info_statistic_aff5634d_count" resultMap="booking_info_statistic_aff5634d_countStatistic0">
+        select
+                bi.booking_status_enum_booking_status_enum_id_1  
+                ,  count(bi.booking_info_id)
+ as result_kf
+        FROM booking_info bi
+
+        ${ew.customSqlSegment}
+        group by 
+            bi.booking_status_enum_booking_status_enum_id_1
+    </select>
+
+
+    <select id="booking_info_statistic_17a6caf6_count" resultMap="booking_info_statistic_17a6caf6_countStatistic0">
+        select
+                bi.booking_status_enum_booking_status_enum_id_1  
+                ,  count(bi.booking_info_id)
+ as result_kf
+        FROM booking_info bi
+
+        ${ew.customSqlSegment}
+        group by 
+            bi.booking_status_enum_booking_status_enum_id_1
+    </select>
+
+
+    <select id="booking_info_statistic_c980a12e_count" resultMap="booking_info_statistic_c980a12e_countStatistic0">
+        select
+                bi.booking_status_enum_booking_status_enum_id_1  
+                ,  count(bi.booking_info_id)
+ as result_kf
+        FROM booking_info bi
+
+        ${ew.customSqlSegment}
+        group by 
+            bi.booking_status_enum_booking_status_enum_id_1
+    </select>
+
+
+    <select id="booking_info_booking_date_datetime_statistic_eae3f8e9_count" resultMap="booking_info_booking_date_datetime_statistic_eae3f8e9_countStatistic0">
+        select
+                bi.booking_date  
+                ,  count(bi.booking_info_id)
+ as result_kf
+        FROM booking_info bi
+
+        ${ew.customSqlSegment}
+        group by 
+            bi.booking_date
+    </select>
+
+
+    <select id="booking_info_booking_date_datetime_statistic_e87a89ae_count" resultMap="booking_info_booking_date_datetime_statistic_e87a89ae_countStatistic0">
+        select
+                bi.booking_date  
+                ,  count(bi.booking_info_id)
+ as result_kf
+        FROM booking_info bi
+
+        ${ew.customSqlSegment}
+        group by 
+            bi.booking_date
+    </select>
+
+
+    <select id="booking_info_booking_date_datetime_statistic_674e8a71_count" resultMap="booking_info_booking_date_datetime_statistic_674e8a71_countStatistic0">
+        select
+                bi.booking_date  
+                ,  count(bi.booking_info_id)
+ as result_kf
+        FROM booking_info bi
+
+        ${ew.customSqlSegment}
+        group by 
+            bi.booking_date
+    </select>
+
+
+    <select id="booking_info_booking_status_enum_booking_status_enum_id_1_status_statistic_e8bf0f4a_count" resultMap="booking_info_booking_status_enum_booking_status_enum_id_1_status_statistic_e8bf0f4a_countStatistic0">
+        select
+                bi.booking_status_enum_booking_status_enum_id_1  
+                ,  count(bi.booking_info_id)
+ as result_kf
+        FROM booking_info bi
+
+        ${ew.customSqlSegment}
+        group by 
+            bi.booking_status_enum_booking_status_enum_id_1
+    </select>
+
+
+    <select id="booking_info_booking_status_enum_booking_status_enum_id_1_status_statistic_3920cb9d_count" resultMap="booking_info_booking_status_enum_booking_status_enum_id_1_status_statistic_3920cb9d_countStatistic0">
+        select
+                bi.booking_status_enum_booking_status_enum_id_1  
+                ,  count(bi.booking_info_id)
+ as result_kf
+        FROM booking_info bi
+
+        ${ew.customSqlSegment}
+        group by 
+            bi.booking_status_enum_booking_status_enum_id_1
+    </select>
+
+
+    <select id="booking_info_booking_status_enum_booking_status_enum_id_1_status_statistic_abe486bb_count" resultMap="booking_info_booking_status_enum_booking_status_enum_id_1_status_statistic_abe486bb_countStatistic0">
+        select
+                bi.booking_status_enum_booking_status_enum_id_1  
+                ,  count(bi.booking_info_id)
+ as result_kf
+        FROM booking_info bi
+
+        ${ew.customSqlSegment}
+        group by 
+            bi.booking_status_enum_booking_status_enum_id_1
+    </select>
+
+
+    <select id="booking_info_create_time_datetime_statistic_deef36d9_count" resultMap="booking_info_create_time_datetime_statistic_deef36d9_countStatistic0">
+        select
+                bi.create_time  
+                ,  count(bi.booking_info_id)
+ as result_kf
+        FROM booking_info bi
+
+        ${ew.customSqlSegment}
+        group by 
+            bi.create_time
+    </select>
+
+
+    <select id="booking_info_create_time_datetime_statistic_198072fd_count" resultMap="booking_info_create_time_datetime_statistic_198072fd_countStatistic0">
+        select
+                bi.create_time  
+                ,  count(bi.booking_info_id)
+ as result_kf
+        FROM booking_info bi
+
+        ${ew.customSqlSegment}
+        group by 
+            bi.create_time
+    </select>
+
+
+    <select id="booking_info_create_time_datetime_statistic_25bff35e_count" resultMap="booking_info_create_time_datetime_statistic_25bff35e_countStatistic0">
+        select
+                bi.create_time  
+                ,  count(bi.booking_info_id)
+ as result_kf
+        FROM booking_info bi
+
+        ${ew.customSqlSegment}
+        group by 
+            bi.create_time
+    </select>
+
+
+    <select id="booking_info_start_time_datetime_statistic_f9865a97_count" resultMap="booking_info_start_time_datetime_statistic_f9865a97_countStatistic0">
+        select
+                bi.start_time  
+                ,  count(bi.booking_info_id)
+ as result_kf
+        FROM booking_info bi
+
+        ${ew.customSqlSegment}
+        group by 
+            bi.start_time
+    </select>
+
+
+    <select id="booking_info_start_time_datetime_statistic_8d1d71fe_count" resultMap="booking_info_start_time_datetime_statistic_8d1d71fe_countStatistic0">
+        select
+                bi.start_time  
+                ,  count(bi.booking_info_id)
+ as result_kf
+        FROM booking_info bi
+
+        ${ew.customSqlSegment}
+        group by 
+            bi.start_time
+    </select>
+
+
+    <select id="booking_info_start_time_datetime_statistic_937c1379_count" resultMap="booking_info_start_time_datetime_statistic_937c1379_countStatistic0">
+        select
+                bi.start_time  
+                ,  count(bi.booking_info_id)
+ as result_kf
+        FROM booking_info bi
+
+        ${ew.customSqlSegment}
+        group by 
+            bi.start_time
+    </select>
+
+
+    <select id="booking_info_end_time_datetime_statistic_2492f29a_count" resultMap="booking_info_end_time_datetime_statistic_2492f29a_countStatistic0">
+        select
+                bi.end_time  
+                ,  count(bi.booking_info_id)
+ as result_kf
+        FROM booking_info bi
+
+        ${ew.customSqlSegment}
+        group by 
+            bi.end_time
+    </select>
+
+
+    <select id="booking_info_end_time_datetime_statistic_e6adae60_count" resultMap="booking_info_end_time_datetime_statistic_e6adae60_countStatistic0">
+        select
+                bi.end_time  
+                ,  count(bi.booking_info_id)
+ as result_kf
+        FROM booking_info bi
+
+        ${ew.customSqlSegment}
+        group by 
+            bi.end_time
+    </select>
+
+
+    <select id="booking_info_end_time_datetime_statistic_d22436f5_count" resultMap="booking_info_end_time_datetime_statistic_d22436f5_countStatistic0">
+        select
+                bi.end_time  
+                ,  count(bi.booking_info_id)
+ as result_kf
+        FROM booking_info bi
+
+        ${ew.customSqlSegment}
+        group by 
+            bi.end_time
+    </select>
+
+
+
+</mapper>

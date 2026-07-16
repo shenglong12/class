@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kuafu.web.mapper.ClassroomInfoStatisticsMapper">
+
+    <resultMap id="classroom_info_statistic_b88cfabc_countStatistic0" type="com.kuafu.web.entity.ClassroomInfoStatisticB88cfabcCount$Statistic0">
+        <result property="buildingEnumBuildingEnumId1" column="building_enum_building_enum_id_1"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="classroom_info_statistic_ca7982e5_countStatistic0" type="com.kuafu.web.entity.ClassroomInfoStatisticCa7982e5Count$Statistic0">
+        <result property="buildingEnumBuildingEnumId1" column="building_enum_building_enum_id_1"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="classroom_info_statistic_b73aeebe_countStatistic0" type="com.kuafu.web.entity.ClassroomInfoStatisticB73aeebeCount$Statistic0">
+        <result property="buildingEnumBuildingEnumId1" column="building_enum_building_enum_id_1"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="classroom_info_building_enum_building_enum_id_1_status_statistic_85cdeae2_countStatistic0" type="com.kuafu.web.entity.ClassroomInfoBuildingEnumBuildingEnumId1StatusStatistic85cdeae2Count$Statistic0">
+        <result property="buildingEnumBuildingEnumId1" column="building_enum_building_enum_id_1"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="classroom_info_building_enum_building_enum_id_1_status_statistic_69e0173b_countStatistic0" type="com.kuafu.web.entity.ClassroomInfoBuildingEnumBuildingEnumId1StatusStatistic69e0173bCount$Statistic0">
+        <result property="buildingEnumBuildingEnumId1" column="building_enum_building_enum_id_1"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="classroom_info_building_enum_building_enum_id_1_status_statistic_70a96f89_countStatistic0" type="com.kuafu.web.entity.ClassroomInfoBuildingEnumBuildingEnumId1StatusStatistic70a96f89Count$Statistic0">
+        <result property="buildingEnumBuildingEnumId1" column="building_enum_building_enum_id_1"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+
+
+
+    <select id="classroom_info_statistic_b88cfabc_count" resultMap="classroom_info_statistic_b88cfabc_countStatistic0">
+        select
+                ci.building_enum_building_enum_id_1  
+                ,  count(ci.classroom_info_id)
+ as result_kf
+        FROM classroom_info ci
+
+        ${ew.customSqlSegment}
+        group by 
+            ci.building_enum_building_enum_id_1
+    </select>
+
+
+    <select id="classroom_info_statistic_ca7982e5_count" resultMap="classroom_info_statistic_ca7982e5_countStatistic0">
+        select
+                ci.building_enum_building_enum_id_1  
+                ,  count(ci.classroom_info_id)
+ as result_kf
+        FROM classroom_info ci
+
+        ${ew.customSqlSegment}
+        group by 
+            ci.building_enum_building_enum_id_1
+    </select>
+
+
+    <select id="classroom_info_statistic_b73aeebe_count" resultMap="classroom_info_statistic_b73aeebe_countStatistic0">
+        select
+                ci.building_enum_building_enum_id_1  
+                ,  count(ci.classroom_info_id)
+ as result_kf
+        FROM classroom_info ci
+
+        ${ew.customSqlSegment}
+        group by 
+            ci.building_enum_building_enum_id_1
+    </select>
+
+
+    <select id="classroom_info_building_enum_building_enum_id_1_status_statistic_85cdeae2_count" resultMap="classroom_info_building_enum_building_enum_id_1_status_statistic_85cdeae2_countStatistic0">
+        select
+                ci.building_enum_building_enum_id_1  
+                ,  count(ci.classroom_info_id)
+ as result_kf
+        FROM classroom_info ci
+
+        ${ew.customSqlSegment}
+        group by 
+            ci.building_enum_building_enum_id_1
+    </select>
+
+
+    <select id="classroom_info_building_enum_building_enum_id_1_status_statistic_69e0173b_count" resultMap="classroom_info_building_enum_building_enum_id_1_status_statistic_69e0173b_countStatistic0">
+        select
+                ci.building_enum_building_enum_id_1  
+                ,  count(ci.classroom_info_id)
+ as result_kf
+        FROM classroom_info ci
+
+        ${ew.customSqlSegment}
+        group by 
+            ci.building_enum_building_enum_id_1
+    </select>
+
+
+    <select id="classroom_info_building_enum_building_enum_id_1_status_statistic_70a96f89_count" resultMap="classroom_info_building_enum_building_enum_id_1_status_statistic_70a96f89_countStatistic0">
+        select
+                ci.building_enum_building_enum_id_1  
+                ,  count(ci.classroom_info_id)
+ as result_kf
+        FROM classroom_info ci
+
+        ${ew.customSqlSegment}
+        group by 
+            ci.building_enum_building_enum_id_1
+    </select>
+
+
+
+</mapper>

@@ -1,0 +1,40 @@
+name: app-backend
+
+services:
+  # 应用端后端服务
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: app-backend
+    restart: unless-stopped
+    ports:
+      - "6789:6789"
+    volumes:
+      # 持久化数据库和上传文件
+      - ./data/sqlite:/app/data
+      - ./data/uploads:/app/uploadPath
+    environment:
+      - PORT=6789
+      - LOGIN_ENABLE=true
+      - CACHE_TYPE=local
+      - DB_TYPE=sqlite
+      - UPLOAD_PATH=/app/uploadPath
+      - SQLITE_PATH=/app/data/demo.sqlite
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:6789/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  sqlite-data:
+  upload-data:
+

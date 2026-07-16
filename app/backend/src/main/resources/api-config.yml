@@ -1,0 +1,20 @@
+api-proxy:
+  apis:
+    - apiId: geocoder # apiid
+      description: 腾讯逆地址解析api # api描述
+      targetUrl: https://apis.map.qq.com/ws/geocoder/v1 # api地址
+      method: GET # 请求方式
+      headers:
+#        - name: Content-Type
+#          type: constant
+#          value: application/json
+#        - name: Authorization
+#          type: variable
+#          value: authToken  # 从请求上下文中获取的动态变量
+      isRestFul: false #  是否是rest风格的api
+      params: # 拼接在路径中的参数
+        - name: key  # 名称
+          type: constant # 类型 constant 常量 variable 变量
+          value: T4CBZ-CVML5-E5GI5-IGCAS-ZFYQH-CEB7H
+        - name: location
+          type: variable

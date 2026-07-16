@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kuafu.web.mapper.BookingInfoAllMapper">
+    <sql id="booking_info_list_sql">
+        select
+        ui.college   ,
+        bi.user_info_user_info_id_1   ,
+        bi.create_time   ,
+        bi.classroom_info_classroom_info_id_1   ,
+        bi.purpose   ,
+        bi.booking_date   ,
+        bse.status_name   ,
+        bi.booking_info_id   ,
+        bi.end_time   ,
+        ui.student_id   ,
+        ui.role_enum_role_enum_id_1   ,
+        ci.room_number   ,
+        ci.qr_code_path   ,
+        bi.start_time   ,
+        ui.password   ,
+        ci.building_enum_building_enum_id_1   ,
+        ui.registration_date   ,
+        ui.major   ,
+        ui.name   ,
+        bi.booking_status_enum_booking_status_enum_id_1   ,
+        ui.user_status_enum_user_status_enum_id_1   ,
+        ui.phone_number   ,
+        bi.time_period   
+
+
+        FROM booking_info bi
+        left join user_info ui on bi.user_info_user_info_id_1 = ui.user_info_id
+        left join classroom_info ci on bi.classroom_info_classroom_info_id_1 = ci.classroom_info_id
+        left join booking_status_enum bse on bi.booking_status_enum_booking_status_enum_id_1 = bse.booking_status_enum_id
+
+        </sql>
+
+        <resultMap id="selectListNewMap" type="com.kuafu.web.entity.BookingInfoAll">
+
+        <result property="college" column="college"/>
+
+        <result property="userInfoUserInfoId1" column="user_info_user_info_id_1"/>
+
+        <result property="createTime" column="create_time"/>
+
+        <result property="classroomInfoClassroomInfoId1" column="classroom_info_classroom_info_id_1"/>
+
+        <result property="purpose" column="purpose"/>
+
+        <result property="bookingDate" column="booking_date"/>
+
+        <result property="statusName" column="status_name"/>
+
+        <result property="bookingInfoId" column="booking_info_id"/>
+
+        <result property="endTime" column="end_time"/>
+
+        <result property="studentId" column="student_id"/>
+
+        <result property="roleEnumRoleEnumId1" column="role_enum_role_enum_id_1"/>
+
+        <result property="roomNumber" column="room_number"/>
+
+        <result property="qrCodePath" column="qr_code_path"/>
+
+        <result property="startTime" column="start_time"/>
+
+        <result property="password" column="password"/>
+
+        <result property="buildingEnumBuildingEnumId1" column="building_enum_building_enum_id_1"/>
+
+        <result property="registrationDate" column="registration_date"/>
+
+        <result property="major" column="major"/>
+
+        <result property="name" column="name"/>
+
+        <result property="bookingStatusEnumBookingStatusEnumId1" column="booking_status_enum_booking_status_enum_id_1"/>
+
+        <result property="userStatusEnumUserStatusEnumId1" column="user_status_enum_user_status_enum_id_1"/>
+
+        <result property="phoneNumber" column="phone_number"/>
+
+        <result property="timePeriod" column="time_period"/>
+
+
+
+
+        </resultMap>
+
+<select id="selectListNew"  resultMap="selectListNewMap">
+select
+ui.college   ,
+bi.user_info_user_info_id_1   ,
+bi.create_time   ,
+bi.classroom_info_classroom_info_id_1   ,
+bi.purpose   ,
+bi.booking_date   ,
+bse.status_name   ,
+bi.booking_info_id   ,
+bi.end_time   ,
+ui.student_id   ,
+ui.role_enum_role_enum_id_1   ,
+ci.room_number   ,
+ci.qr_code_path   ,
+bi.start_time   ,
+ui.password   ,
+ci.building_enum_building_enum_id_1   ,
+ui.registration_date   ,
+ui.major   ,
+ui.name   ,
+bi.booking_status_enum_booking_status_enum_id_1   ,
+ui.user_status_enum_user_status_enum_id_1   ,
+ui.phone_number   ,
+bi.time_period   
+
+
+
+        FROM booking_info bi
+        left join
+
+        user_info
+
+        ui on bi.user_info_user_info_id_1 = ui.user_info_id
+        left join
+
+        classroom_info
+
+        ci on bi.classroom_info_classroom_info_id_1 = ci.classroom_info_id
+        left join
+
+        booking_status_enum
+
+        bse on bi.booking_status_enum_booking_status_enum_id_1 = bse.booking_status_enum_id
+
+
+
+${ew.customSqlSegment}
+        </select>
+
+<select id="selectList" resultType="com.kuafu.web.entity.BookingInfoAll">
+select
+ui.college   ,
+bi.user_info_user_info_id_1   ,
+bi.create_time   ,
+bi.classroom_info_classroom_info_id_1   ,
+bi.purpose   ,
+bi.booking_date   ,
+bse.status_name   ,
+bi.booking_info_id   ,
+bi.end_time   ,
+ui.student_id   ,
+ui.role_enum_role_enum_id_1   ,
+ci.room_number   ,
+ci.qr_code_path   ,
+bi.start_time   ,
+ui.password   ,
+ci.building_enum_building_enum_id_1   ,
+ui.registration_date   ,
+ui.major   ,
+ui.name   ,
+bi.booking_status_enum_booking_status_enum_id_1   ,
+ui.user_status_enum_user_status_enum_id_1   ,
+ui.phone_number   ,
+bi.time_period   
+
+
+        FROM booking_info bi
+        left join user_info ui on bi.user_info_user_info_id_1 = ui.user_info_id
+        left join classroom_info ci on bi.classroom_info_classroom_info_id_1 = ci.classroom_info_id
+        left join booking_status_enum bse on bi.booking_status_enum_booking_status_enum_id_1 = bse.booking_status_enum_id
+
+
+${ew.customSqlSegment}
+        </select>
+
+<select id="selectPage" resultType="com.kuafu.web.entity.BookingInfoAll">
+select
+ui.college  ,
+bi.user_info_user_info_id_1  ,
+bi.create_time  ,
+bi.classroom_info_classroom_info_id_1  ,
+bi.purpose  ,
+bi.booking_date  ,
+bse.status_name  ,
+bi.booking_info_id  ,
+bi.end_time  ,
+ui.student_id  ,
+ui.role_enum_role_enum_id_1  ,
+ci.room_number  ,
+ci.qr_code_path  ,
+bi.start_time  ,
+ui.password  ,
+ci.building_enum_building_enum_id_1  ,
+ui.registration_date  ,
+ui.major  ,
+ui.name  ,
+bi.booking_status_enum_booking_status_enum_id_1  ,
+ui.user_status_enum_user_status_enum_id_1  ,
+ui.phone_number  ,
+bi.time_period  
+
+
+
+        FROM booking_info bi
+        left join user_info ui on bi.user_info_user_info_id_1 = ui.user_info_id
+        left join classroom_info ci on bi.classroom_info_classroom_info_id_1 = ci.classroom_info_id
+        left join booking_status_enum bse on bi.booking_status_enum_booking_status_enum_id_1 = bse.booking_status_enum_id
+
+
+
+
+
+${ew.customSqlSegment}
+        </select>
+
+<select id="selectById" resultType="com.kuafu.web.entity.BookingInfoAll">
+select
+ui.college  ,
+bi.user_info_user_info_id_1  ,
+bi.create_time  ,
+bi.classroom_info_classroom_info_id_1  ,
+bi.purpose  ,
+bi.booking_date  ,
+bse.status_name  ,
+bi.booking_info_id  ,
+bi.end_time  ,
+ui.student_id  ,
+ui.role_enum_role_enum_id_1  ,
+ci.room_number  ,
+ci.qr_code_path  ,
+bi.start_time  ,
+ui.password  ,
+ci.building_enum_building_enum_id_1  ,
+ui.registration_date  ,
+ui.major  ,
+ui.name  ,
+bi.booking_status_enum_booking_status_enum_id_1  ,
+ui.user_status_enum_user_status_enum_id_1  ,
+ui.phone_number  ,
+bi.time_period  
+
+
+        FROM booking_info bi
+        left join user_info ui on bi.user_info_user_info_id_1 = ui.user_info_id
+        left join classroom_info ci on bi.classroom_info_classroom_info_id_1 = ci.classroom_info_id
+        left join booking_status_enum bse on bi.booking_status_enum_booking_status_enum_id_1 = bse.booking_status_enum_id
+
+
+
+        where bi.booking_info_id = #{id}
+        </select>
+
+<select id="selectCount" resultType="java.lang.Long">
+select
+count(*)
+
+
+
+FROM booking_info bi
+left join user_info ui on bi.user_info_user_info_id_1 = ui.user_info_id
+left join classroom_info ci on bi.classroom_info_classroom_info_id_1 = ci.classroom_info_id
+left join booking_status_enum bse on bi.booking_status_enum_booking_status_enum_id_1 = bse.booking_status_enum_id
+
+
+
+${ew.customSqlSegment}
+
+
+        </select>
+
+        </mapper>

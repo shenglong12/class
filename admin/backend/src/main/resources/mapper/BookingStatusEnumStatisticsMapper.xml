@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kuafu.web.mapper.BookingStatusEnumStatisticsMapper">
+
+    <resultMap id="booking_status_enum_booking_status_enum_id_status_statistic_adcce722_countStatistic0" type="com.kuafu.web.entity.BookingStatusEnumBookingStatusEnumIdStatusStatisticAdcce722Count$Statistic0">
+        <result property="bookingStatusEnumId" column="booking_status_enum_id"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="booking_status_enum_booking_status_enum_id_status_statistic_e5e0d2ef_countStatistic0" type="com.kuafu.web.entity.BookingStatusEnumBookingStatusEnumIdStatusStatisticE5e0d2efCount$Statistic0">
+        <result property="bookingStatusEnumId" column="booking_status_enum_id"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="booking_status_enum_booking_status_enum_id_status_statistic_b6fdee33_countStatistic0" type="com.kuafu.web.entity.BookingStatusEnumBookingStatusEnumIdStatusStatisticB6fdee33Count$Statistic0">
+        <result property="bookingStatusEnumId" column="booking_status_enum_id"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="booking_status_enum_status_name_status_statistic_90b34348_countStatistic0" type="com.kuafu.web.entity.BookingStatusEnumStatusNameStatusStatistic90b34348Count$Statistic0">
+        <result property="statusName" column="status_name"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="booking_status_enum_status_name_status_statistic_6038f1fd_countStatistic0" type="com.kuafu.web.entity.BookingStatusEnumStatusNameStatusStatistic6038f1fdCount$Statistic0">
+        <result property="statusName" column="status_name"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="booking_status_enum_status_name_status_statistic_a52c379f_countStatistic0" type="com.kuafu.web.entity.BookingStatusEnumStatusNameStatusStatisticA52c379fCount$Statistic0">
+        <result property="statusName" column="status_name"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+
+
+
+    <select id="booking_status_enum_booking_status_enum_id_status_statistic_adcce722_count" resultMap="booking_status_enum_booking_status_enum_id_status_statistic_adcce722_countStatistic0">
+        select
+                bse.booking_status_enum_id  
+                ,  count(bse.booking_status_enum_id)
+ as result_kf
+        FROM booking_status_enum bse
+
+        ${ew.customSqlSegment}
+        group by 
+            bse.booking_status_enum_id
+    </select>
+
+
+    <select id="booking_status_enum_booking_status_enum_id_status_statistic_e5e0d2ef_count" resultMap="booking_status_enum_booking_status_enum_id_status_statistic_e5e0d2ef_countStatistic0">
+        select
+                bse.booking_status_enum_id  
+                ,  count(bse.booking_status_enum_id)
+ as result_kf
+        FROM booking_status_enum bse
+
+        ${ew.customSqlSegment}
+        group by 
+            bse.booking_status_enum_id
+    </select>
+
+
+    <select id="booking_status_enum_booking_status_enum_id_status_statistic_b6fdee33_count" resultMap="booking_status_enum_booking_status_enum_id_status_statistic_b6fdee33_countStatistic0">
+        select
+                bse.booking_status_enum_id  
+                ,  count(bse.booking_status_enum_id)
+ as result_kf
+        FROM booking_status_enum bse
+
+        ${ew.customSqlSegment}
+        group by 
+            bse.booking_status_enum_id
+    </select>
+
+
+    <select id="booking_status_enum_status_name_status_statistic_90b34348_count" resultMap="booking_status_enum_status_name_status_statistic_90b34348_countStatistic0">
+        select
+                bse.status_name  
+                ,  count(bse.booking_status_enum_id)
+ as result_kf
+        FROM booking_status_enum bse
+
+        ${ew.customSqlSegment}
+        group by 
+            bse.status_name
+    </select>
+
+
+    <select id="booking_status_enum_status_name_status_statistic_6038f1fd_count" resultMap="booking_status_enum_status_name_status_statistic_6038f1fd_countStatistic0">
+        select
+                bse.status_name  
+                ,  count(bse.booking_status_enum_id)
+ as result_kf
+        FROM booking_status_enum bse
+
+        ${ew.customSqlSegment}
+        group by 
+            bse.status_name
+    </select>
+
+
+    <select id="booking_status_enum_status_name_status_statistic_a52c379f_count" resultMap="booking_status_enum_status_name_status_statistic_a52c379f_countStatistic0">
+        select
+                bse.status_name  
+                ,  count(bse.booking_status_enum_id)
+ as result_kf
+        FROM booking_status_enum bse
+
+        ${ew.customSqlSegment}
+        group by 
+            bse.status_name
+    </select>
+
+
+
+</mapper>

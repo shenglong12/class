@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kuafu.web.mapper.UserInfoStatisticsMapper">
+
+    <resultMap id="user_info_statistic_26db9414_countStatistic0" type="com.kuafu.web.entity.UserInfoStatistic26db9414Count$Statistic0">
+        <result property="roleEnumRoleEnumId1" column="role_enum_role_enum_id_1"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="user_info_statistic_d748e97d_countStatistic0" type="com.kuafu.web.entity.UserInfoStatisticD748e97dCount$Statistic0">
+        <result property="roleEnumRoleEnumId1" column="role_enum_role_enum_id_1"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="user_info_statistic_fd86a11f_countStatistic0" type="com.kuafu.web.entity.UserInfoStatisticFd86a11fCount$Statistic0">
+        <result property="roleEnumRoleEnumId1" column="role_enum_role_enum_id_1"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="user_info_statistic_cd4888d0_countStatistic0" type="com.kuafu.web.entity.UserInfoStatisticCd4888d0Count$Statistic0">
+        <result property="userStatusEnumUserStatusEnumId1" column="user_status_enum_user_status_enum_id_1"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="user_info_statistic_97b06621_countStatistic0" type="com.kuafu.web.entity.UserInfoStatistic97b06621Count$Statistic0">
+        <result property="userStatusEnumUserStatusEnumId1" column="user_status_enum_user_status_enum_id_1"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="user_info_statistic_b82e02ef_countStatistic0" type="com.kuafu.web.entity.UserInfoStatisticB82e02efCount$Statistic0">
+        <result property="userStatusEnumUserStatusEnumId1" column="user_status_enum_user_status_enum_id_1"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="user_info_role_enum_role_enum_id_1_status_statistic_17efc900_countStatistic0" type="com.kuafu.web.entity.UserInfoRoleEnumRoleEnumId1StatusStatistic17efc900Count$Statistic0">
+        <result property="roleEnumRoleEnumId1" column="role_enum_role_enum_id_1"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="user_info_role_enum_role_enum_id_1_status_statistic_c074d54d_countStatistic0" type="com.kuafu.web.entity.UserInfoRoleEnumRoleEnumId1StatusStatisticC074d54dCount$Statistic0">
+        <result property="roleEnumRoleEnumId1" column="role_enum_role_enum_id_1"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="user_info_role_enum_role_enum_id_1_status_statistic_ab566b0f_countStatistic0" type="com.kuafu.web.entity.UserInfoRoleEnumRoleEnumId1StatusStatisticAb566b0fCount$Statistic0">
+        <result property="roleEnumRoleEnumId1" column="role_enum_role_enum_id_1"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="user_info_user_status_enum_user_status_enum_id_1_status_statistic_b868696b_countStatistic0" type="com.kuafu.web.entity.UserInfoUserStatusEnumUserStatusEnumId1StatusStatisticB868696bCount$Statistic0">
+        <result property="userStatusEnumUserStatusEnumId1" column="user_status_enum_user_status_enum_id_1"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="user_info_user_status_enum_user_status_enum_id_1_status_statistic_811edae4_countStatistic0" type="com.kuafu.web.entity.UserInfoUserStatusEnumUserStatusEnumId1StatusStatistic811edae4Count$Statistic0">
+        <result property="userStatusEnumUserStatusEnumId1" column="user_status_enum_user_status_enum_id_1"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="user_info_user_status_enum_user_status_enum_id_1_status_statistic_52937bd0_countStatistic0" type="com.kuafu.web.entity.UserInfoUserStatusEnumUserStatusEnumId1StatusStatistic52937bd0Count$Statistic0">
+        <result property="userStatusEnumUserStatusEnumId1" column="user_status_enum_user_status_enum_id_1"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="user_info_registration_date_datetime_statistic_c6d4320e_countStatistic0" type="com.kuafu.web.entity.UserInfoRegistrationDateDatetimeStatisticC6d4320eCount$Statistic0">
+        <result property="registrationDate" column="registration_date"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="user_info_registration_date_datetime_statistic_5c524202_countStatistic0" type="com.kuafu.web.entity.UserInfoRegistrationDateDatetimeStatistic5c524202Count$Statistic0">
+        <result property="registrationDate" column="registration_date"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="user_info_registration_date_datetime_statistic_f89dba19_countStatistic0" type="com.kuafu.web.entity.UserInfoRegistrationDateDatetimeStatisticF89dba19Count$Statistic0">
+        <result property="registrationDate" column="registration_date"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+
+
+
+    <select id="user_info_statistic_26db9414_count" resultMap="user_info_statistic_26db9414_countStatistic0">
+        select
+                ui.role_enum_role_enum_id_1  
+                ,  count(ui.user_info_id)
+ as result_kf
+        FROM user_info ui
+
+        ${ew.customSqlSegment}
+        group by 
+            ui.role_enum_role_enum_id_1
+    </select>
+
+
+    <select id="user_info_statistic_d748e97d_count" resultMap="user_info_statistic_d748e97d_countStatistic0">
+        select
+                ui.role_enum_role_enum_id_1  
+                ,  count(ui.user_info_id)
+ as result_kf
+        FROM user_info ui
+
+        ${ew.customSqlSegment}
+        group by 
+            ui.role_enum_role_enum_id_1
+    </select>
+
+
+    <select id="user_info_statistic_fd86a11f_count" resultMap="user_info_statistic_fd86a11f_countStatistic0">
+        select
+                ui.role_enum_role_enum_id_1  
+                ,  count(ui.user_info_id)
+ as result_kf
+        FROM user_info ui
+
+        ${ew.customSqlSegment}
+        group by 
+            ui.role_enum_role_enum_id_1
+    </select>
+
+
+    <select id="user_info_statistic_cd4888d0_count" resultMap="user_info_statistic_cd4888d0_countStatistic0">
+        select
+                ui.user_status_enum_user_status_enum_id_1  
+                ,  count(ui.user_info_id)
+ as result_kf
+        FROM user_info ui
+
+        ${ew.customSqlSegment}
+        group by 
+            ui.user_status_enum_user_status_enum_id_1
+    </select>
+
+
+    <select id="user_info_statistic_97b06621_count" resultMap="user_info_statistic_97b06621_countStatistic0">
+        select
+                ui.user_status_enum_user_status_enum_id_1  
+                ,  count(ui.user_info_id)
+ as result_kf
+        FROM user_info ui
+
+        ${ew.customSqlSegment}
+        group by 
+            ui.user_status_enum_user_status_enum_id_1
+    </select>
+
+
+    <select id="user_info_statistic_b82e02ef_count" resultMap="user_info_statistic_b82e02ef_countStatistic0">
+        select
+                ui.user_status_enum_user_status_enum_id_1  
+                ,  count(ui.user_info_id)
+ as result_kf
+        FROM user_info ui
+
+        ${ew.customSqlSegment}
+        group by 
+            ui.user_status_enum_user_status_enum_id_1
+    </select>
+
+
+    <select id="user_info_role_enum_role_enum_id_1_status_statistic_17efc900_count" resultMap="user_info_role_enum_role_enum_id_1_status_statistic_17efc900_countStatistic0">
+        select
+                ui.role_enum_role_enum_id_1  
+                ,  count(ui.user_info_id)
+ as result_kf
+        FROM user_info ui
+
+        ${ew.customSqlSegment}
+        group by 
+            ui.role_enum_role_enum_id_1
+    </select>
+
+
+    <select id="user_info_role_enum_role_enum_id_1_status_statistic_c074d54d_count" resultMap="user_info_role_enum_role_enum_id_1_status_statistic_c074d54d_countStatistic0">
+        select
+                ui.role_enum_role_enum_id_1  
+                ,  count(ui.user_info_id)
+ as result_kf
+        FROM user_info ui
+
+        ${ew.customSqlSegment}
+        group by 
+            ui.role_enum_role_enum_id_1
+    </select>
+
+
+    <select id="user_info_role_enum_role_enum_id_1_status_statistic_ab566b0f_count" resultMap="user_info_role_enum_role_enum_id_1_status_statistic_ab566b0f_countStatistic0">
+        select
+                ui.role_enum_role_enum_id_1  
+                ,  count(ui.user_info_id)
+ as result_kf
+        FROM user_info ui
+
+        ${ew.customSqlSegment}
+        group by 
+            ui.role_enum_role_enum_id_1
+    </select>
+
+
+    <select id="user_info_user_status_enum_user_status_enum_id_1_status_statistic_b868696b_count" resultMap="user_info_user_status_enum_user_status_enum_id_1_status_statistic_b868696b_countStatistic0">
+        select
+                ui.user_status_enum_user_status_enum_id_1  
+                ,  count(ui.user_info_id)
+ as result_kf
+        FROM user_info ui
+
+        ${ew.customSqlSegment}
+        group by 
+            ui.user_status_enum_user_status_enum_id_1
+    </select>
+
+
+    <select id="user_info_user_status_enum_user_status_enum_id_1_status_statistic_811edae4_count" resultMap="user_info_user_status_enum_user_status_enum_id_1_status_statistic_811edae4_countStatistic0">
+        select
+                ui.user_status_enum_user_status_enum_id_1  
+                ,  count(ui.user_info_id)
+ as result_kf
+        FROM user_info ui
+
+        ${ew.customSqlSegment}
+        group by 
+            ui.user_status_enum_user_status_enum_id_1
+    </select>
+
+
+    <select id="user_info_user_status_enum_user_status_enum_id_1_status_statistic_52937bd0_count" resultMap="user_info_user_status_enum_user_status_enum_id_1_status_statistic_52937bd0_countStatistic0">
+        select
+                ui.user_status_enum_user_status_enum_id_1  
+                ,  count(ui.user_info_id)
+ as result_kf
+        FROM user_info ui
+
+        ${ew.customSqlSegment}
+        group by 
+            ui.user_status_enum_user_status_enum_id_1
+    </select>
+
+
+    <select id="user_info_registration_date_datetime_statistic_c6d4320e_count" resultMap="user_info_registration_date_datetime_statistic_c6d4320e_countStatistic0">
+        select
+                ui.registration_date  
+                ,  count(ui.user_info_id)
+ as result_kf
+        FROM user_info ui
+
+        ${ew.customSqlSegment}
+        group by 
+            ui.registration_date
+    </select>
+
+
+    <select id="user_info_registration_date_datetime_statistic_5c524202_count" resultMap="user_info_registration_date_datetime_statistic_5c524202_countStatistic0">
+        select
+                ui.registration_date  
+                ,  count(ui.user_info_id)
+ as result_kf
+        FROM user_info ui
+
+        ${ew.customSqlSegment}
+        group by 
+            ui.registration_date
+    </select>
+
+
+    <select id="user_info_registration_date_datetime_statistic_f89dba19_count" resultMap="user_info_registration_date_datetime_statistic_f89dba19_countStatistic0">
+        select
+                ui.registration_date  
+                ,  count(ui.user_info_id)
+ as result_kf
+        FROM user_info ui
+
+        ${ew.customSqlSegment}
+        group by 
+            ui.registration_date
+    </select>
+
+
+
+</mapper>

@@ -1,0 +1,115 @@
+server:
+  port: ${PORT:6789}
+
+# MyBatis配置
+mybatis:
+  # 配置mapper的扫描，找到所有的mapper.xml映射文件
+  mapperLocations: classpath*:mapper/*.xml
+  # 加载全局的配置文件
+  configLocation: classpath:mybatis/mybatis-config.xml
+
+app:
+  # 文件路径 示例（ Windows配置D:/kuafu/uploadPath，Linux配置 /home/kuafu/uploadPath）
+  profile: ${UPLOAD_PATH:C:/Users/NebYae/Desktop/class/uploadPath}
+
+knife4j:
+  enable: true
+
+cache:
+  #缓存可选择redis还是local
+  type: ${CACHE_TYPE:local}
+
+token:
+  expireTime: 43200
+
+#mysql
+spring:
+  profiles:
+    active: ${DB_TYPE:sqlite}
+  jackson:
+    date-format: "yyyy-MM-dd HH:mm:ss"
+    time-zone: GMT+8
+  redis:
+    host: 114.116.233.39
+    password: lmxderedis
+    database: 3
+  servlet:
+    multipart:
+      max-request-size: 100MB
+      max-file-size: 50MB
+      enabled: true
+  web:
+    resources:
+      static-locations: file:${FRONTEND_DIR:/Users/jiangfei/kuafu/tmp/frontend/test/} , classpath:/dist/
+
+# 在控制台输出sql
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+
+login:
+  sms:
+    debug: ${SMS_DEBUG:true}
+    code_timeout: ${CODE_TIMEOUT:5}
+  enable: ${LOGIN_ENABLE:true}
+  table: Login
+  select:
+    table: Login
+    column: phone_number
+  openid:
+    table: Login
+    column: wx_open_id
+  relevance_column_name: relevance_table
+python:
+  env: ${PYTHON_ENV:D:\software\anaconda3\envs\charts;D:\software\anaconda3\envs\charts\Library\mingw-w64\bin;D:\software\anaconda3\envs\charts\Library\usr\bin;D:\software\anaconda3\envs\charts\Library\bin;D:\software\anaconda3\envs\charts\Scripts;D:\software\anaconda3\envs\charts\bin;D:\software\anaconda3\condabin;}
+
+llm:
+  enable: ${LLM_ENABLE:false}
+  vector:
+    provider: ${VECTOR_PROVIDER:ali}
+    collection_name: ${VECTOR_COLLECT_NAME:test}
+    api_key: ${VECTOR_KEY:sk-YZlXBOCo011rIkIKA0MrVnGq6GVcl453158DC1D6C11EF871B421CA686AEFB}
+    end_point: ${VECTOR_POINT:vrs-cn-o493rha5i00015.dashvector.cn-beijing.aliyuncs.com}
+  embedding:
+    provider: ${EMBEDDING_PROVIDER:ali}
+    api_key: ${EMBEDDING_KEY:sk-bdee674292b9420d8328325d794a78c5}
+  chat:
+    provider: ${CHAT_PROVIDER:dify}
+    dify_key: ${CHAT_DIFY_KEY:app-AOoj2JH4sQIijF80rFRal9IV}
+    dify_api: ${CHAT_DIDY_API:http://121.37.137.221:6789/v1}
+    default_prompt: ${CHAT_DEFAULT_PROMPT:你是一名小助手}
+
+
+
+logging:
+  level:
+    org:
+      springframework:
+        boot:
+          autoconfigure:
+            logging: info
+
+
+message:
+  enable: ${MESSAGE_ENABLE:false}
+  notifyUrl: ${MESSAGE_BASE_URL:xxxxxxxxx}
+  appId: ${MESSAGE_APP_ID:1}
+
+storage:
+  type: ${STORAGE_TYPE:local}
+  s3:
+    access_key: ${S3_ACCESS_KEY:xx}
+    secret_key: ${S3_SECRET_KEY:xx}
+    endpoint: ${S3_ENDPOINT:https://obs.cn-east-3.myhuaweicloud.com}
+    domain: ${S3_DOMAIN:https://kuafuai.obs.cn-east-3.myhuaweicloud.com}
+    region: ${S3_REGION:cn-east-3}
+    bucket_name: ${S3_BUCKET_NAME:kuafuai}
+
+
+ocr:
+  type: local
+  tessdata: ${OCR_TESSDATA:tessdata}
+
+
+

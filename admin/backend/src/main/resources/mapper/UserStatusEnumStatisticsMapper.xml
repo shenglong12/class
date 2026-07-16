@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kuafu.web.mapper.UserStatusEnumStatisticsMapper">
+
+    <resultMap id="user_status_enum_user_status_enum_id_status_statistic_250bfd65_countStatistic0" type="com.kuafu.web.entity.UserStatusEnumUserStatusEnumIdStatusStatistic250bfd65Count$Statistic0">
+        <result property="userStatusEnumId" column="user_status_enum_id"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="user_status_enum_user_status_enum_id_status_statistic_75457957_countStatistic0" type="com.kuafu.web.entity.UserStatusEnumUserStatusEnumIdStatusStatistic75457957Count$Statistic0">
+        <result property="userStatusEnumId" column="user_status_enum_id"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="user_status_enum_user_status_enum_id_status_statistic_1ef97a93_countStatistic0" type="com.kuafu.web.entity.UserStatusEnumUserStatusEnumIdStatusStatistic1ef97a93Count$Statistic0">
+        <result property="userStatusEnumId" column="user_status_enum_id"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="user_status_enum_status_name_status_statistic_d1621cea_countStatistic0" type="com.kuafu.web.entity.UserStatusEnumStatusNameStatusStatisticD1621ceaCount$Statistic0">
+        <result property="statusName" column="status_name"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="user_status_enum_status_name_status_statistic_0ee48f21_countStatistic0" type="com.kuafu.web.entity.UserStatusEnumStatusNameStatusStatistic0ee48f21Count$Statistic0">
+        <result property="statusName" column="status_name"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="user_status_enum_status_name_status_statistic_6a2582b2_countStatistic0" type="com.kuafu.web.entity.UserStatusEnumStatusNameStatusStatistic6a2582b2Count$Statistic0">
+        <result property="statusName" column="status_name"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+
+
+
+    <select id="user_status_enum_user_status_enum_id_status_statistic_250bfd65_count" resultMap="user_status_enum_user_status_enum_id_status_statistic_250bfd65_countStatistic0">
+        select
+                use.user_status_enum_id  
+                ,  count(use.user_status_enum_id)
+ as result_kf
+        FROM user_status_enum use
+
+        ${ew.customSqlSegment}
+        group by 
+            use.user_status_enum_id
+    </select>
+
+
+    <select id="user_status_enum_user_status_enum_id_status_statistic_75457957_count" resultMap="user_status_enum_user_status_enum_id_status_statistic_75457957_countStatistic0">
+        select
+                use.user_status_enum_id  
+                ,  count(use.user_status_enum_id)
+ as result_kf
+        FROM user_status_enum use
+
+        ${ew.customSqlSegment}
+        group by 
+            use.user_status_enum_id
+    </select>
+
+
+    <select id="user_status_enum_user_status_enum_id_status_statistic_1ef97a93_count" resultMap="user_status_enum_user_status_enum_id_status_statistic_1ef97a93_countStatistic0">
+        select
+                use.user_status_enum_id  
+                ,  count(use.user_status_enum_id)
+ as result_kf
+        FROM user_status_enum use
+
+        ${ew.customSqlSegment}
+        group by 
+            use.user_status_enum_id
+    </select>
+
+
+    <select id="user_status_enum_status_name_status_statistic_d1621cea_count" resultMap="user_status_enum_status_name_status_statistic_d1621cea_countStatistic0">
+        select
+                use.status_name  
+                ,  count(use.user_status_enum_id)
+ as result_kf
+        FROM user_status_enum use
+
+        ${ew.customSqlSegment}
+        group by 
+            use.status_name
+    </select>
+
+
+    <select id="user_status_enum_status_name_status_statistic_0ee48f21_count" resultMap="user_status_enum_status_name_status_statistic_0ee48f21_countStatistic0">
+        select
+                use.status_name  
+                ,  count(use.user_status_enum_id)
+ as result_kf
+        FROM user_status_enum use
+
+        ${ew.customSqlSegment}
+        group by 
+            use.status_name
+    </select>
+
+
+    <select id="user_status_enum_status_name_status_statistic_6a2582b2_count" resultMap="user_status_enum_status_name_status_statistic_6a2582b2_countStatistic0">
+        select
+                use.status_name  
+                ,  count(use.user_status_enum_id)
+ as result_kf
+        FROM user_status_enum use
+
+        ${ew.customSqlSegment}
+        group by 
+            use.status_name
+    </select>
+
+
+
+</mapper>

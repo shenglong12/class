@@ -1,0 +1,131 @@
+# ======================
+# 运行时环境 (demo/)
+# ======================
+demo/jdk1.8.0_431/
+demo/apache-maven-3.9.9/
+demo/node-v22.12.0/
+
+# ======================
+# 依赖目录
+# ======================
+node_modules/
+jspm_packages/
+
+# ======================
+# 构建输出
+# ======================
+target/
+dist/
+build/
+out/
+.next/
+.nuxt/
+
+# ======================
+# 上传文件 & 数据库
+# ======================
+uploadPath/
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+*.db
+
+# ======================
+# 环境变量 (敏感信息)
+# ======================
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.*.local
+
+# ======================
+# IDE & 编辑器
+# ======================
+.idea/
+*.iws
+*.iml
+*.ipr
+.vscode/
+.vscode-test/
+.factorypath
+.settings/
+.classpath
+.project
+.springBeans
+.sts4-cache
+.apt_generated
+
+# ======================
+# OS 文件
+# ======================
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ======================
+# 日志 & 报告
+# ======================
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# ======================
+# 测试覆盖率
+# ======================
+coverage/
+*.lcov
+.nyc_output/
+
+# ======================
+# 缓存
+# ======================
+.cache/
+.parcel-cache/
+.eslintcache
+.stylelintcache
+*.tsbuildinfo
+
+# ======================
+# Maven wrapper (保留 jar)
+# ======================
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+# ======================
+# 零时文件
+# ======================
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+~*
+
+# ======================
+# Python
+# ======================
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# ======================
+# Docker
+# ======================
+docker-compose.override.yml
+
+# ======================
+# Claude Code (本地配置)
+# ======================
+.claude/settings.local.json

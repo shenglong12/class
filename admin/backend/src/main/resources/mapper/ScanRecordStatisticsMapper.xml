@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kuafu.web.mapper.ScanRecordStatisticsMapper">
+
+    <resultMap id="scan_record_statistic_cf42143d_countStatistic0" type="com.kuafu.web.entity.ScanRecordStatisticCf42143dCount$Statistic0">
+        <result property="userInfoUserInfoId1" column="user_info_user_info_id_1"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="scan_record_statistic_53e9c652_countStatistic0" type="com.kuafu.web.entity.ScanRecordStatistic53e9c652Count$Statistic0">
+        <result property="userInfoUserInfoId1" column="user_info_user_info_id_1"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="scan_record_statistic_44e4ab34_countStatistic0" type="com.kuafu.web.entity.ScanRecordStatistic44e4ab34Count$Statistic0">
+        <result property="userInfoUserInfoId1" column="user_info_user_info_id_1"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="scan_record_scan_time_datetime_statistic_2603ead4_countStatistic0" type="com.kuafu.web.entity.ScanRecordScanTimeDatetimeStatistic2603ead4Count$Statistic0">
+        <result property="scanTime" column="scan_time"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="scan_record_scan_time_datetime_statistic_c280d87a_countStatistic0" type="com.kuafu.web.entity.ScanRecordScanTimeDatetimeStatisticC280d87aCount$Statistic0">
+        <result property="scanTime" column="scan_time"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="scan_record_scan_time_datetime_statistic_e3554bf9_countStatistic0" type="com.kuafu.web.entity.ScanRecordScanTimeDatetimeStatisticE3554bf9Count$Statistic0">
+        <result property="scanTime" column="scan_time"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+
+
+
+    <select id="scan_record_statistic_cf42143d_count" resultMap="scan_record_statistic_cf42143d_countStatistic0">
+        select
+                sr.user_info_user_info_id_1  
+                ,  count(sr.scan_id)
+ as result_kf
+        FROM scan_record sr
+
+        ${ew.customSqlSegment}
+        group by 
+            sr.user_info_user_info_id_1
+    </select>
+
+
+    <select id="scan_record_statistic_53e9c652_count" resultMap="scan_record_statistic_53e9c652_countStatistic0">
+        select
+                sr.user_info_user_info_id_1  
+                ,  count(sr.scan_id)
+ as result_kf
+        FROM scan_record sr
+
+        ${ew.customSqlSegment}
+        group by 
+            sr.user_info_user_info_id_1
+    </select>
+
+
+    <select id="scan_record_statistic_44e4ab34_count" resultMap="scan_record_statistic_44e4ab34_countStatistic0">
+        select
+                sr.user_info_user_info_id_1  
+                ,  count(sr.scan_id)
+ as result_kf
+        FROM scan_record sr
+
+        ${ew.customSqlSegment}
+        group by 
+            sr.user_info_user_info_id_1
+    </select>
+
+
+    <select id="scan_record_scan_time_datetime_statistic_2603ead4_count" resultMap="scan_record_scan_time_datetime_statistic_2603ead4_countStatistic0">
+        select
+                sr.scan_time  
+                ,  count(sr.scan_id)
+ as result_kf
+        FROM scan_record sr
+
+        ${ew.customSqlSegment}
+        group by 
+            sr.scan_time
+    </select>
+
+
+    <select id="scan_record_scan_time_datetime_statistic_c280d87a_count" resultMap="scan_record_scan_time_datetime_statistic_c280d87a_countStatistic0">
+        select
+                sr.scan_time  
+                ,  count(sr.scan_id)
+ as result_kf
+        FROM scan_record sr
+
+        ${ew.customSqlSegment}
+        group by 
+            sr.scan_time
+    </select>
+
+
+    <select id="scan_record_scan_time_datetime_statistic_e3554bf9_count" resultMap="scan_record_scan_time_datetime_statistic_e3554bf9_countStatistic0">
+        select
+                sr.scan_time  
+                ,  count(sr.scan_id)
+ as result_kf
+        FROM scan_record sr
+
+        ${ew.customSqlSegment}
+        group by 
+            sr.scan_time
+    </select>
+
+
+
+</mapper>

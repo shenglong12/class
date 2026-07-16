@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kuafu.web.mapper.RepairOrderAllMapper">
+
+
+        <resultMap id="selectListNewMap" type="com.kuafu.web.entity.RepairOrderAll">
+            <result property="college"  column="college"  />
+            <result property="userInfoUserInfoId1"  column="user_info_user_info_id_1"  />
+            <result property="createTime"  column="create_time"  />
+            <result property="roleEnumRoleEnumId1"  column="role_enum_role_enum_id_1"  />
+            <result property="roomNumber"  column="room_number"  />
+            <result property="qrCodePath"  column="qr_code_path"  />
+            <result property="phoneNumber"  column="phone_number"  />
+            <result property="repairOrderId"  column="repair_order_id"  />
+            <result property="statusName"  column="status_name"  />
+            <result property="registrationDate"  column="registration_date"  />
+            <result property="content"  column="content"  />
+            <result property="userStatusEnumUserStatusEnumId1"  column="user_status_enum_user_status_enum_id_1"  />
+            <result property="feedback"  column="feedback"  />
+            <result property="studentId"  column="student_id"  />
+            <result property="password"  column="password"  />
+            <result property="major"  column="major"  />
+            <result property="buildingEnumBuildingEnumId1"  column="building_enum_building_enum_id_1"  />
+            <result property="imageFilesResourceKey"  column="image_files_resource_key"  />
+            <result property="name"  column="name"  />
+            <result property="repairStatusEnumRepairStatusEnumId1"  column="repair_status_enum_repair_status_enum_id_1"  />
+            <result property="classroomInfoClassroomInfoId1"  column="classroom_info_classroom_info_id_1"  />
+            <collection property="imageFiles" ofType="com.kuafu.common.domin.StaticResource">
+                <id property="resourceId" column="image_files_resource_id"/>
+                <result property="resourceName" column="image_files_resource_name"/>
+                <result property="resourcePath" column="image_files_resource_path"/>
+                <result property="relatedTableName" column="image_files_related_table_name"/>
+                <result property="relatedTableKey" column="image_files_related_table_key"/>
+                <result property="relateTableColumnName" column="image_files_relate_table_column_name"/>
+            </collection>
+        </resultMap>
+
+        <select id="selectList" resultMap="selectListNewMap">
+        select
+        ui.college   ,
+        ro.user_info_user_info_id_1   ,
+        ro.create_time   ,
+        ui.role_enum_role_enum_id_1   ,
+        ci.room_number   ,
+        ci.qr_code_path   ,
+        ui.phone_number   ,
+        ro.repair_order_id   ,
+        rse.status_name   ,
+        ui.registration_date   ,
+        ro.content   ,
+        ui.user_status_enum_user_status_enum_id_1   ,
+        ro.feedback   ,
+        ui.student_id   ,
+        ui.password   ,
+        ui.major   ,
+        ci.building_enum_building_enum_id_1   ,
+        ro.image_files_resource_key   ,
+        ui.name   ,
+        ro.repair_status_enum_repair_status_enum_id_1   ,
+        ro.classroom_info_classroom_info_id_1   
+
+        ,image_files.resource_id as  image_files_resource_id
+        ,image_files.resource_name as image_files_resource_name
+        ,image_files.resource_path as  image_files_resource_path
+        ,image_files.related_table_name as  image_files_related_table_name
+        ,image_files.related_table_key as  image_files_related_table_key
+        ,image_files.relate_table_column_name as image_files_relate_table_column_name
+
+        FROM repair_order ro
+            left join user_info ui on ro.user_info_user_info_id_1 = ui.user_info_id
+            left join classroom_info ci on ro.classroom_info_classroom_info_id_1 = ci.classroom_info_id
+            left join repair_status_enum rse on ro.repair_status_enum_repair_status_enum_id_1 = rse.repair_status_enum_id
+        left join
+        (select resource_id,
+        resource_name,
+        resource_path,
+        related_table_name,
+        related_table_key,
+        relate_table_column_name
+        from static_resources
+        where related_table_name='repair_order' and relate_table_column_name='image_files'
+        ) as image_files on image_files.related_table_key=ro.repair_order_id
+
+${ew.customSqlSegment}
+        </select>
+
+        <select id="selectPage" resultMap="selectListNewMap">
+        select
+        ui.college   ,
+        ro.user_info_user_info_id_1   ,
+        ro.create_time   ,
+        ui.role_enum_role_enum_id_1   ,
+        ci.room_number   ,
+        ci.qr_code_path   ,
+        ui.phone_number   ,
+        ro.repair_order_id   ,
+        rse.status_name   ,
+        ui.registration_date   ,
+        ro.content   ,
+        ui.user_status_enum_user_status_enum_id_1   ,
+        ro.feedback   ,
+        ui.student_id   ,
+        ui.password   ,
+        ui.major   ,
+        ci.building_enum_building_enum_id_1   ,
+        ro.image_files_resource_key   ,
+        ui.name   ,
+        ro.repair_status_enum_repair_status_enum_id_1   ,
+        ro.classroom_info_classroom_info_id_1   
+
+        ,image_files.resource_id as  image_files_resource_id
+        ,image_files.resource_name as image_files_resource_name
+        ,image_files.resource_path as  image_files_resource_path
+        ,image_files.related_table_name as  image_files_related_table_name
+        ,image_files.related_table_key as  image_files_related_table_key
+        ,image_files.relate_table_column_name as image_files_relate_table_column_name
+
+        FROM repair_order ro
+        left join user_info ui on ro.user_info_user_info_id_1 = ui.user_info_id
+        left join classroom_info ci on ro.classroom_info_classroom_info_id_1 = ci.classroom_info_id
+        left join repair_status_enum rse on ro.repair_status_enum_repair_status_enum_id_1 = rse.repair_status_enum_id
+        left join
+        (select resource_id,
+        resource_name,
+        resource_path,
+        related_table_name,
+        related_table_key,
+        relate_table_column_name
+        from static_resources
+        where related_table_name='repair_order' and relate_table_column_name='image_files'
+        ) as image_files on image_files.related_table_key=ro.repair_order_id
+
+        ${ew.customSqlSegment}
+        </select>
+
+        <select id="selectById" resultMap="selectListNewMap">
+        select
+        ui.college   ,
+        ro.user_info_user_info_id_1   ,
+        ro.create_time   ,
+        ui.role_enum_role_enum_id_1   ,
+        ci.room_number   ,
+        ci.qr_code_path   ,
+        ui.phone_number   ,
+        ro.repair_order_id   ,
+        rse.status_name   ,
+        ui.registration_date   ,
+        ro.content   ,
+        ui.user_status_enum_user_status_enum_id_1   ,
+        ro.feedback   ,
+        ui.student_id   ,
+        ui.password   ,
+        ui.major   ,
+        ci.building_enum_building_enum_id_1   ,
+        ro.image_files_resource_key   ,
+        ui.name   ,
+        ro.repair_status_enum_repair_status_enum_id_1   ,
+        ro.classroom_info_classroom_info_id_1   
+
+        ,image_files.resource_id as  image_files_resource_id
+        ,image_files.resource_name as image_files_resource_name
+        ,image_files.resource_path as  image_files_resource_path
+        ,image_files.related_table_name as  image_files_related_table_name
+        ,image_files.related_table_key as  image_files_related_table_key
+        ,image_files.relate_table_column_name as image_files_relate_table_column_name
+
+        FROM repair_order ro
+        left join user_info ui on ro.user_info_user_info_id_1 = ui.user_info_id
+        left join classroom_info ci on ro.classroom_info_classroom_info_id_1 = ci.classroom_info_id
+        left join repair_status_enum rse on ro.repair_status_enum_repair_status_enum_id_1 = rse.repair_status_enum_id
+        left join
+        (select resource_id,
+        resource_name,
+        resource_path,
+        related_table_name,
+        related_table_key,
+        relate_table_column_name
+        from static_resources
+        where related_table_name='repair_order' and relate_table_column_name='image_files'
+        ) as image_files on image_files.related_table_key=ro.repair_order_id
+
+        where ro.repair_order_id = #{id}
+        </select>
+
+
+</mapper>

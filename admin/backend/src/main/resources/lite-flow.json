@@ -1,0 +1,44 @@
+{
+  "api_employee_team": {
+    "description": "11",
+    "components": {
+      "ListTableCmp": {
+        "data": {
+          "table": "Employee",
+          "where": {
+            "_and": [
+              {
+                "op": "_like",
+                "key": {
+                  "name": "employee_number",
+                  "type": "string"
+                },
+                "value": {
+                  "kind": "context",
+                  "value": "employeeName"
+                }
+              },
+              {
+                "op": "_eq",
+                "key": {
+                  "name": "role",
+                  "type": "int"
+                },
+                "value": {
+                  "kind": "literal",
+                  "value": "1"
+                }
+              }
+            ]
+          },
+          "sort": {
+            "desc": "id"
+          }
+        }
+      },
+      "successCmp": {
+      }
+    },
+    "el": "THEN"
+  }
+}

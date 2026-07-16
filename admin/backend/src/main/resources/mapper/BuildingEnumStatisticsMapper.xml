@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kuafu.web.mapper.BuildingEnumStatisticsMapper">
+
+    <resultMap id="building_enum_building_enum_id_status_statistic_146915fe_countStatistic0" type="com.kuafu.web.entity.BuildingEnumBuildingEnumIdStatusStatistic146915feCount$Statistic0">
+        <result property="buildingEnumId" column="building_enum_id"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="building_enum_building_enum_id_status_statistic_060920a4_countStatistic0" type="com.kuafu.web.entity.BuildingEnumBuildingEnumIdStatusStatistic060920a4Count$Statistic0">
+        <result property="buildingEnumId" column="building_enum_id"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="building_enum_building_enum_id_status_statistic_f0e4acc5_countStatistic0" type="com.kuafu.web.entity.BuildingEnumBuildingEnumIdStatusStatisticF0e4acc5Count$Statistic0">
+        <result property="buildingEnumId" column="building_enum_id"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+
+
+
+    <select id="building_enum_building_enum_id_status_statistic_146915fe_count" resultMap="building_enum_building_enum_id_status_statistic_146915fe_countStatistic0">
+        select
+                be.building_enum_id  
+                ,  count(be.building_enum_id)
+ as result_kf
+        FROM building_enum be
+
+        ${ew.customSqlSegment}
+        group by 
+            be.building_enum_id
+    </select>
+
+
+    <select id="building_enum_building_enum_id_status_statistic_060920a4_count" resultMap="building_enum_building_enum_id_status_statistic_060920a4_countStatistic0">
+        select
+                be.building_enum_id  
+                ,  count(be.building_enum_id)
+ as result_kf
+        FROM building_enum be
+
+        ${ew.customSqlSegment}
+        group by 
+            be.building_enum_id
+    </select>
+
+
+    <select id="building_enum_building_enum_id_status_statistic_f0e4acc5_count" resultMap="building_enum_building_enum_id_status_statistic_f0e4acc5_countStatistic0">
+        select
+                be.building_enum_id  
+                ,  count(be.building_enum_id)
+ as result_kf
+        FROM building_enum be
+
+        ${ew.customSqlSegment}
+        group by 
+            be.building_enum_id
+    </select>
+
+
+
+</mapper>

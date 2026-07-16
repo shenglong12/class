@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kuafu.web.mapper.BackgroundImageStatisticsMapper">
+
+    <resultMap id="background_image_statistic_2cec2f0a_countStatistic0" type="com.kuafu.web.entity.BackgroundImageStatistic2cec2f0aCount$Statistic0">
+        <result property="userInfoUserInfoId1" column="user_info_user_info_id_1"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="background_image_statistic_6d9fd8e7_countStatistic0" type="com.kuafu.web.entity.BackgroundImageStatistic6d9fd8e7Count$Statistic0">
+        <result property="userInfoUserInfoId1" column="user_info_user_info_id_1"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="background_image_statistic_db8eea91_countStatistic0" type="com.kuafu.web.entity.BackgroundImageStatisticDb8eea91Count$Statistic0">
+        <result property="userInfoUserInfoId1" column="user_info_user_info_id_1"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="background_image_upload_time_datetime_statistic_775bad3a_countStatistic0" type="com.kuafu.web.entity.BackgroundImageUploadTimeDatetimeStatistic775bad3aCount$Statistic0">
+        <result property="uploadTime" column="upload_time"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="background_image_upload_time_datetime_statistic_401f3864_countStatistic0" type="com.kuafu.web.entity.BackgroundImageUploadTimeDatetimeStatistic401f3864Count$Statistic0">
+        <result property="uploadTime" column="upload_time"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+<resultMap id="background_image_upload_time_datetime_statistic_f7bdec73_countStatistic0" type="com.kuafu.web.entity.BackgroundImageUploadTimeDatetimeStatisticF7bdec73Count$Statistic0">
+        <result property="uploadTime" column="upload_time"/>
+        <result property="result_kf" column="result_kf"/>
+    </resultMap>
+
+
+
+    <select id="background_image_statistic_2cec2f0a_count" resultMap="background_image_statistic_2cec2f0a_countStatistic0">
+        select
+                bi.user_info_user_info_id_1  
+                ,  count(bi.background_image_id)
+ as result_kf
+        FROM background_image bi
+
+        ${ew.customSqlSegment}
+        group by 
+            bi.user_info_user_info_id_1
+    </select>
+
+
+    <select id="background_image_statistic_6d9fd8e7_count" resultMap="background_image_statistic_6d9fd8e7_countStatistic0">
+        select
+                bi.user_info_user_info_id_1  
+                ,  count(bi.background_image_id)
+ as result_kf
+        FROM background_image bi
+
+        ${ew.customSqlSegment}
+        group by 
+            bi.user_info_user_info_id_1
+    </select>
+
+
+    <select id="background_image_statistic_db8eea91_count" resultMap="background_image_statistic_db8eea91_countStatistic0">
+        select
+                bi.user_info_user_info_id_1  
+                ,  count(bi.background_image_id)
+ as result_kf
+        FROM background_image bi
+
+        ${ew.customSqlSegment}
+        group by 
+            bi.user_info_user_info_id_1
+    </select>
+
+
+    <select id="background_image_upload_time_datetime_statistic_775bad3a_count" resultMap="background_image_upload_time_datetime_statistic_775bad3a_countStatistic0">
+        select
+                bi.upload_time  
+                ,  count(bi.background_image_id)
+ as result_kf
+        FROM background_image bi
+
+        ${ew.customSqlSegment}
+        group by 
+            bi.upload_time
+    </select>
+
+
+    <select id="background_image_upload_time_datetime_statistic_401f3864_count" resultMap="background_image_upload_time_datetime_statistic_401f3864_countStatistic0">
+        select
+                bi.upload_time  
+                ,  count(bi.background_image_id)
+ as result_kf
+        FROM background_image bi
+
+        ${ew.customSqlSegment}
+        group by 
+            bi.upload_time
+    </select>
+
+
+    <select id="background_image_upload_time_datetime_statistic_f7bdec73_count" resultMap="background_image_upload_time_datetime_statistic_f7bdec73_countStatistic0">
+        select
+                bi.upload_time  
+                ,  count(bi.background_image_id)
+ as result_kf
+        FROM background_image bi
+
+        ${ew.customSqlSegment}
+        group by 
+            bi.upload_time
+    </select>
+
+
+
+</mapper>

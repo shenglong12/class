@@ -1,4 +1,4 @@
-package com.kuafu.common.resource.service.mapper;
+package com.kuafu.common.resource.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.kuafu.common.entity.StaticResource;

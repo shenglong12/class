@@ -7,6 +7,6 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public class StatisticResourceServiceImpl extends ServiceImpl<com.kuafu.common.resource.service.mapper.StaticResourcesMapper,
+public class StatisticResourceServiceImpl extends ServiceImpl<com.kuafu.common.resource.mapper.StaticResourcesMapper,
         StaticResource> implements IStaticResourceService {
 }

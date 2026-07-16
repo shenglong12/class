@@ -1,0 +1,21 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "启动 app（端口 6789）",
+            "request": "launch",
+            "mainClass": "com.kuafu.MisAppBackendApplication",
+            "projectName": "app",
+            "cwd": "${workspaceFolder}/app/backend"
+        },
+        {
+            "type": "java",
+            "name": "启动 admin（端口 8080）",
+            "request": "launch",
+            "mainClass": "com.kuafu.AdminApplication",
+            "projectName": "admin-app",
+            "cwd": "${workspaceFolder}/admin/backend"
+        }
+    ]
+}

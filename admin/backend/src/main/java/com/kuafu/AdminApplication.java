@@ -9,8 +9,8 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @SpringBootApplication
 //@EnableScheduling
 @Import(SchedulingConfig.class)
-public class MisAppBackendApplication {
+public class AdminApplication {
     public static void main(String[] args) {
-        SpringApplication.run(MisAppBackendApplication.class, args);
+        SpringApplication.run(AdminApplication.class, args);
     }
 }

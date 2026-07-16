@@ -10,7 +10,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.kuafu</groupId>
-    <artifactId>app</artifactId>
+    <artifactId>admin-app</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>app</name>
     <description>Demo project for Spring Boot</description>

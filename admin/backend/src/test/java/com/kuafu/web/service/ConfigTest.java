@@ -1,6 +1,6 @@
 package com.kuafu.web.service;
 
-import com.kuafu.MisAppBackendApplication;
+import com.kuafu.AdminApplication;
 import com.kuafu.common.cache.Cache;
 import com.kuafu.common.component.RequestDataContext;
 import com.kuafu.common.wx.WxAppAccessTokenRequest;
@@ -18,7 +18,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
 
-@SpringBootTest(classes = {MisAppBackendApplication.class})
+@SpringBootTest(classes = {AdminApplication.class})
 @RunWith(SpringRunner.class)
 class ConfigTest {
 

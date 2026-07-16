@@ -328,9 +328,8 @@ function choose(item){
 // 生成二维码
 async function generateQRCode(row) {
   try {
-    // 生成二维码内容
-    const randomStr = Math.random().toString(36).substring(2, 10);
-    const qrContent = `/classroom/${row.classroomInfoId}_${randomStr}`;
+    // 生成二维码内容（不再加随机串，重新生成时内容不变可覆盖旧文件）
+    const qrContent = `/classroom/${row.classroomInfoId}`;
     
     // 创建Canvas元素
     const canvas = document.createElement('canvas');
@@ -350,9 +349,11 @@ async function generateQRCode(row) {
     // 转换为Blob对象
     canvas.toBlob(async (blob) => {
       if (blob) {
-        // 上传二维码图片
+        // 上传二维码图片（文件名用教学楼+教室号，重新生成可直接覆盖）
         const formData = new FormData();
-        formData.append('file', blob, `classroom_${row.classroomInfoId}.png`);
+        const buildingName = row.buildingName || `building_${row.buildingEnumBuildingEnumId1}`;
+        const fileName = `${buildingName}_${row.roomNumber}.png`;
+        formData.append('file', blob, fileName);
         
         try {
           const uploadResult = await proxy.$api.common.upload(formData);

@@ -74,6 +74,23 @@ label="教学楼名称"
 {{ formAll.buildingName }}
 </base-cell-item>
 </base-cell>
+<base-cell
+header="二维码预览"
+label-width="180px"
+class="m-b-10"
+v-if="form.qrCodePath"
+>
+<base-cell-item
+label="二维码图片"
+>
+<el-image
+:src="form.qrCodePath"
+style="width: 200px; height: 200px;"
+fit="contain"
+:preview-src-list="[form.qrCodePath]"
+/>
+</base-cell-item>
+</base-cell>
 <base-layout
 style="text-align: center;"
 w_full="true"

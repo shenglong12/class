@@ -22,15 +22,14 @@ public class ProjectPathEnvironmentPostProcessor implements EnvironmentPostProce
         Map<String, Object> props = new HashMap<>();
 
         // 自动设置 SQLITE_PATH（如果未通过环境变量显式设置）
-        if (isNotExplicitlySet(environment, "SQLITE_PATH")) {
-            String projectRoot = findProjectRoot();
+        String projectRoot = findProjectRoot();
+        if (projectRoot != null && isNotExplicitlySet(environment, "SQLITE_PATH")) {
             String sqlitePath = new File(projectRoot, "app/data/sqlite/demo.sqlite").getAbsolutePath();
             props.put("SQLITE_PATH", sqlitePath);
         }
 
         // 自动设置 UPLOAD_PATH（如果未通过环境变量显式设置）
-        if (isNotExplicitlySet(environment, "UPLOAD_PATH")) {
-            String projectRoot = findProjectRoot();
+        if (projectRoot != null && isNotExplicitlySet(environment, "UPLOAD_PATH")) {
             String uploadPath = new File(projectRoot, "uploadPath").getAbsolutePath();
             props.put("UPLOAD_PATH", uploadPath);
         }
@@ -63,7 +62,7 @@ public class ProjectPathEnvironmentPostProcessor implements EnvironmentPostProce
             dir = dir.getParentFile();
         }
 
-        // 兜底：返回 user.dir
-        return System.getProperty("user.dir");
+        // 找不到项目根目录（如 Docker 容器中），返回 null，由 YAML 默认值或环境变量处理
+        return null;
     }
 }

@@ -3,6 +3,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "AdminApplication",
+            "request": "launch",
+            "mainClass": "com.kuafu.AdminApplication",
+            "projectName": "com.kuafu-app"
+        },
+        {
+            "type": "java",
             "name": "启动 app（端口 6789）",
             "request": "launch",
             "mainClass": "com.kuafu.MisAppBackendApplication",

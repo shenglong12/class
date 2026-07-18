@@ -182,7 +182,7 @@ const props = defineProps({
 })
 let multipleSelection = ref([])
 function handleSelectionChange(selection) {
-    multipleSelection.value = selection.map(item => item.classroom_info_id);
+    multipleSelection.value = selection.map(item => item.classroomInfoId);
 }
 
 // 计算属性，用于判断 params 的长度
@@ -258,22 +258,14 @@ async function handleBatchDelete() {
     const ids = multipleSelection.value
     let res;
 
-    if (import.meta.env.VITE_APP_MODEL === 'PREVIEW') {
-    res = await proxy.$api.table.deleteBatch({
-        table_name: 'classroom_info',
-        param: {
-        ids: ids
-        }
-    });
-    } else {
-        res = await proxy.$api.classroom_info.deleteBatch(ids);
-    }
+    res = await proxy.$api.classroom_info.deleteBatch(ids);
 
     proxy.$modal.msgSuccess(res.message || "批量删除成功");
     refreshTableData();
     multipleSelection.value = [];
     } catch (error) {
         console.error("批量删除失败", error);
+      proxy.$modal.msgError("批量删除失败，请重试");
     }
 }
 async function handleExport() {
@@ -328,6 +320,7 @@ function choose(item){
 // 生成二维码
 async function generateQRCode(row) {
   try {
+    console.log('=== 二维码生成 V2：使用 uploadQrcode 新接口 ===');
     // 生成二维码内容（不再加随机串，重新生成时内容不变可覆盖旧文件）
     const qrContent = `/classroom/${row.classroomInfoId}`;
     
@@ -356,9 +349,14 @@ async function generateQRCode(row) {
         formData.append('file', blob, fileName);
         
         try {
-          const uploadResult = await proxy.$api.common.upload(formData);
-          const qrPath = uploadResult.url;
-          
+          // 使用二维码专用上传接口（后端自动处理：存在则删除旧图，以教学楼_教室号命名）
+          const uploadResult = await proxy.$api.common.uploadQrcode(formData, buildingName, row.roomNumber);
+          if (!uploadResult || !uploadResult.data || !uploadResult.data.url) {
+            proxy.$modal.msgError('上传二维码失败：服务器返回异常');
+            return;
+          }
+          const qrPath = uploadResult.data.url;
+
           let res;
           
           if (import.meta.env.VITE_APP_MODEL === 'PREVIEW') {
@@ -384,15 +382,15 @@ async function generateQRCode(row) {
           refreshTableData();
         } catch (error) {
           console.error('上传二维码失败:', error);
-          proxy.$modal.msgError('生成二维码失败');
+          proxy.$modal.msgError('上传二维码失败，请检查后端是否启动');
         }
       } else {
-        proxy.$modal.msgError('生成二维码失败');
+        proxy.$modal.msgError('二维码图片生成失败');
       }
     }, 'image/png');
   } catch (error) {
-    console.error('生成二维码失败:', error);
-    proxy.$modal.msgError('生成二维码失败');
+    console.error('二维码生成失败:', error);
+    proxy.$modal.msgError('二维码生成失败');
   }
 }
 </script>

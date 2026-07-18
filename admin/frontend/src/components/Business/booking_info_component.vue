@@ -291,7 +291,7 @@ const props = defineProps({
 })
 let multipleSelection = ref([])
 function handleSelectionChange(selection) {
-    multipleSelection.value = selection.map(item => item.booking_info_id);
+    multipleSelection.value = selection.map(item => item.bookingInfoId);
 }
 
 // 计算属性，用于判断 params 的长度
@@ -367,22 +367,14 @@ async function handleBatchDelete() {
     const ids = multipleSelection.value
     let res;
 
-    if (import.meta.env.VITE_APP_MODEL === 'PREVIEW') {
-    res = await proxy.$api.table.deleteBatch({
-        table_name: 'booking_info',
-        param: {
-        ids: ids
-        }
-    });
-    } else {
-        res = await proxy.$api.booking_info.deleteBatch(ids);
-    }
+    res = await proxy.$api.booking_info.deleteBatch(ids);
 
     proxy.$modal.msgSuccess(res.message || "批量删除成功");
     refreshTableData();
     multipleSelection.value = [];
     } catch (error) {
         console.error("批量删除失败", error);
+      proxy.$modal.msgError("批量删除失败，请重试");
     }
 }
 async function handleExport() {

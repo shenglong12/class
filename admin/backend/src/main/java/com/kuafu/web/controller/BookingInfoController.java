@@ -290,4 +290,11 @@ public class BookingInfoController  {
     }
 
 
-            }
+            
+    @DeleteMapping("deleteBatch")
+    @ApiOperation("批量删除")
+    public BaseResponse deleteBatch(@RequestBody List<Integer> ids) {
+        boolean flag = this.bookingInfoService.removeByIds(ids);
+        return flag ? ResultUtils.success() : ResultUtils.error(ErrorCode.OPERATION_ERROR);
+    }
+}

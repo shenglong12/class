@@ -2,6 +2,7 @@ package com.kuafu.common.controller;
 
 import com.google.common.collect.Maps;
 import com.kuafu.common.config.AppConfig;
+import com.kuafu.common.constant.Constants;
 import com.kuafu.common.domin.BaseResponse;
 import com.kuafu.common.domin.ResultUtils;
 import com.kuafu.common.file.FileUploadUtils;
@@ -16,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -42,6 +44,49 @@ public class CommonController {
             data.put("fileName", fileName);
             data.put("newFileName", FileUtils.getName(fileName));
             data.put("originalFilename", file.getOriginalFilename());
+            return ResultUtils.success(data);
+        } catch (Exception e) {
+            return ResultUtils.error(e.getMessage());
+        }
+    }
+
+    /**
+     * 二维码专用上传
+     * 保存到 upload/QR/ 目录，以"教学楼_教室号.png"命名
+     * 如果该教室已有二维码，先删除旧的再保存新的
+     */
+    @PostMapping("/uploadQrcode")
+    public BaseResponse uploadQrcode(MultipartFile file, String buildingName, String roomNumber) throws Exception {
+        try {
+            if (buildingName == null || roomNumber == null) {
+                return ResultUtils.error("教学楼和教室编号不能为空");
+            }
+
+            // 二维码专用目录：uploadPath/upload/QR/
+            String qrcodeDir = AppConfig.getUploadPath() + "/QR";
+            File dir = new File(qrcodeDir);
+            if (!dir.exists()) {
+                dir.mkdirs();
+            }
+
+            // 文件名：教学楼_教室号.png
+            String ext = FileUploadUtils.getExtension(file);
+            String fileName = buildingName + "_" + roomNumber + "." + ext;
+            File destFile = new File(dir, fileName);
+
+            // 如果已存在，先删除旧的
+            if (destFile.exists()) {
+                destFile.delete();
+            }
+
+            // 保存文件
+            file.transferTo(destFile);
+
+            // 返回URL路径
+            String url = Constants.RESOURCE_PREFIX + "/upload/QR/" + fileName;
+            Map<String, String> data = Maps.newHashMap();
+            data.put("url", url);
+            data.put("fileName", fileName);
             return ResultUtils.success(data);
         } catch (Exception e) {
             return ResultUtils.error(e.getMessage());

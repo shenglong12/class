@@ -179,7 +179,7 @@ const props = defineProps({
 })
 let multipleSelection = ref([])
 function handleSelectionChange(selection) {
-    multipleSelection.value = selection.map(item => item.background_image_id);
+    multipleSelection.value = selection.map(item => item.backgroundImageId);
 }
 
 // 计算属性，用于判断 params 的长度
@@ -255,22 +255,14 @@ async function handleBatchDelete() {
     const ids = multipleSelection.value
     let res;
 
-    if (import.meta.env.VITE_APP_MODEL === 'PREVIEW') {
-    res = await proxy.$api.table.deleteBatch({
-        table_name: 'background_image',
-        param: {
-        ids: ids
-        }
-    });
-    } else {
-        res = await proxy.$api.background_image.deleteBatch(ids);
-    }
+    res = await proxy.$api.background_image.deleteBatch(ids);
 
     proxy.$modal.msgSuccess(res.message || "批量删除成功");
     refreshTableData();
     multipleSelection.value = [];
     } catch (error) {
         console.error("批量删除失败", error);
+      proxy.$modal.msgError("批量删除失败，请重试");
     }
 }
 async function handleExport() {

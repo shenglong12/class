@@ -489,22 +489,14 @@ async function handleBatchDelete() {
     const ids = multipleSelection.value
     let res;
 
-    if (import.meta.env.VITE_APP_MODEL === 'PREVIEW') {
-    res = await proxy.$api.table.deleteBatch({
-        table_name: 'dynamic_api_setting',
-        param: {
-        ids: ids
-        }
-    });
-    } else {
-        res = await proxy.$api.dynamic_api_setting.deleteBatch(ids);
-    }
+    res = await proxy.$api.dynamic_api_setting.deleteBatch(ids);
 
     proxy.$modal.msgSuccess(res.message || "批量删除成功");
     refreshTableData();
     multipleSelection.value = [];
     } catch (error) {
         console.error("批量删除失败", error);
+      proxy.$modal.msgError("批量删除失败，请重试");
     }
 }
 async function handleExport() {

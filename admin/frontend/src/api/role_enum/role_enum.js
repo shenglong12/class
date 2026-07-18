@@ -83,4 +83,11 @@ export default {
       method: "post"
     });
   }
+,
+  // 批量删除
+  deleteBatch: (ids) => request({
+    url: BASE_API + '/deleteBatch',
+    method: 'delete',
+    data: ids
+  })
 };

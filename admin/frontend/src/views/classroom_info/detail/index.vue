@@ -84,11 +84,17 @@ v-if="form.qrCodePath"
 label="二维码图片"
 >
 <el-image
-:src="form.qrCodePath"
+:src="qrCodeSrc"
 style="width: 200px; height: 200px;"
 fit="contain"
-:preview-src-list="[form.qrCodePath]"
+:preview-src-list="[qrCodeSrc]"
 />
+	<div style="margin-top: 10px;">
+	<el-button type="primary" size="small" @click="downloadQrCode">
+	<el-icon><download /></el-icon>
+	保存二维码到本地
+	</el-button>
+	</div>
 </base-cell-item>
 </base-cell>
 <base-layout
@@ -139,6 +145,44 @@ let formAll = ref({});
 let rules = ref({});
 let routerQuery = proxy.$route.query;
 let detail = ref('all')
+
+// 格式化二维码URL：补全API前缀，兼容旧数据（参考 ImagePreview.vue 的处理方式）
+const qrCodeSrc = computed(() => {
+  const url = form.value.qrCodePath;
+  if (!url) return '';
+  if (url.startsWith('https://') || url.startsWith('http://')) return url;
+  if (url.startsWith(import.meta.env.VITE_APP_BASE_API)) return url;
+  return import.meta.env.VITE_APP_BASE_API + url;
+});
+
+// 下载二维码到本地
+async function downloadQrCode() {
+  try {
+    const url = qrCodeSrc.value;
+    if (!url) {
+      proxy.$modal.msgError('没有二维码可下载');
+      return;
+    }
+    // 从URL中提取文件名
+    const urlParts = url.split('/');
+    const fileName = urlParts[urlParts.length - 1] || 'qrcode.png';
+    // 通过fetch获取图片并触发下载
+    const response = await fetch(url);
+    const blob = await response.blob();
+    const downloadUrl = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = downloadUrl;
+    link.download = fileName;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(downloadUrl);
+    proxy.$modal.msgSuccess('二维码已保存');
+  } catch (error) {
+    console.error('下载二维码失败:', error);
+    proxy.$modal.msgError('下载失败，请重试');
+  }
+}
 
 function submitForm() {
   proxy.$refs.dataFormRef.validate(async (valid) => {

@@ -46,59 +46,58 @@ import static com.kuafu.common.util.ReflectUtils.createDateStyle;
 public class ExcelProvider {
 
 
-    private static final int BATCH_COUNT = 100;
+    // 与 MyBatis-Plus saveBatch 默认 batchSize 保持一致，减少数据库连接开销
+    private static final int BATCH_COUNT = 1000;
 
     @Resource
     private ApiBusinessService apiBusinessService;
 
     /**
      * 导入 Excel 数据
+     * 先全部读取到内存，再在事务中逐条 save（避免 saveBatch 的 BATCH 模式
+     * SqlSession 获取独立连接导致数据被回滚的问题）。
      *
-     * @param file         excel文件
-     * @param clazz        实体类
-     * @param saveFunction Servcie
-     * @param <T>          实体类范型
-     * @throws IOException
+     * @param file   excel文件
+     * @param clazz  实体类
+     * @param saveOne 逐条保存方法，通常传 xxxService::save
+     * @param <T>    实体类范型
      */
     @Transactional
-    public <T> void importData(MultipartFile file, Class<T> clazz, Consumer<List<T>> saveFunction) {
-
+    public <T> void importData(MultipartFile file, Class<T> clazz, Consumer<T> saveOne) {
         try {
+            // 第一步：读取全部数据
             InputStream inputStream = file.getInputStream();
+            List<T> allData = new java.util.ArrayList<>();
             EasyExcel.read(inputStream, clazz, new ReadListener<T>() {
-                private List<T> cachedDataList = ListUtils.newArrayListWithExpectedSize(BATCH_COUNT);
-
                 @Override
                 public void invoke(T data, AnalysisContext context) {
-                    cachedDataList.add(data);
-                    if (cachedDataList.size() >= BATCH_COUNT) {
-                        saveData();
-                        cachedDataList = ListUtils.newArrayListWithExpectedSize(BATCH_COUNT);
-                    }
+                    allData.add(data);
                 }
-
                 @Override
-                public void doAfterAllAnalysed(AnalysisContext context) {
-                    saveData();
-                }
-
-                private void saveData() {
-                    if (cachedDataList.isEmpty()) {
-                        throw new BusinessException("导入的数据为空");
-                    }
-                    try {
-                        saveFunction.accept(cachedDataList);
-                    } catch (Exception e) {
-                        throw new BusinessException("数据导入失败，列名或数据可能不匹配");
-                    }
-                }
+                public void doAfterAllAnalysed(AnalysisContext context) {}
             }).sheet().doRead();
+
+            if (allData.isEmpty()) {
+                throw new BusinessException("导入的数据为空");
+            }
+
+            // 第二步：在事务中逐条保存（每条都走 Spring 管理的连接，确保提交）
+            int count = 0;
+            for (T entity : allData) {
+                try {
+                    saveOne.accept(entity);
+                    count++;
+                } catch (Exception e) {
+                    throw new BusinessException("第 " + count + " 条数据导入失败: " + e.getMessage());
+                }
+            }
         } catch (ExcelDataConvertException excelDataConvertException) {
             throw new BusinessException("请根据模版对比,检查excel中数据该是文本还是数字或者是表头与数据错误");
+        } catch (BusinessException e) {
+            throw e;
         } catch (Exception e) {
             throw new BusinessException(e.getMessage());
         }
-
     }
 
 
@@ -110,7 +109,7 @@ public class ExcelProvider {
      * @param saveFunction
      * @param <T>
      */
-    public <T> void pdfData(MultipartFile file, Class<T> clazz, Consumer<List<T>> saveFunction) {
+    public <T> void pdfData(MultipartFile file, Class<T> clazz, Consumer<T> saveFunction) {
         try {
 
             String classInfo = class2text(clazz);
@@ -155,7 +154,9 @@ public class ExcelProvider {
                     List<T> listValue = JSON.parseArray(jsonValue, clazz);
 
                     log.info("==========={}", listValue);
-                    saveFunction.accept(listValue);
+                    for (T entity : listValue) {
+                        saveFunction.accept(entity);
+                    }
                 } catch (Exception e) {
                     log.error("{}", e);
                 }

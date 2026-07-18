@@ -34,6 +34,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.kuafu.common.domin.BaseResponse;
 import com.kuafu.common.domin.ErrorCode;
 import com.kuafu.common.domin.ResultUtils;
+import com.kuafu.common.util.SqliteSequenceReset;
 import com.kuafu.common.util.StringUtils;
 import com.kuafu.web.entity.BuildingEnum;
 import com.kuafu.web.service.IBuildingEnumService;
@@ -59,6 +60,7 @@ public class BuildingEnumController  {
     private final MyEventService myEventService;
 
     private final ExcelProvider excelProvider;
+    private final SqliteSequenceReset sequenceReset;
     private final IStaticResourceService staticResourceService;
 
     @PostMapping("page")
@@ -176,10 +178,22 @@ public class BuildingEnumController  {
     {
         String extension = FileUploadUtils.getExtension(file);
         if (StringUtils.equalsIgnoreCase(extension, "pdf")) {
-            excelProvider.pdfData(file, BuildingEnum.class, buildingEnumService::saveBatch);
+            excelProvider.pdfData(file, BuildingEnum.class, entity -> {
+            LambdaQueryWrapper<BuildingEnum> qw = new LambdaQueryWrapper<>();
+            qw.eq(BuildingEnum::getBuildingName, entity.getBuildingName());
+            if (buildingEnumService.count(qw) == 0) {
+                buildingEnumService.save(entity);
+            }
+        });
         }
         else{
-            excelProvider.importData(file, BuildingEnum.class, buildingEnumService::saveBatch);
+            excelProvider.importData(file, BuildingEnum.class, entity -> {
+            LambdaQueryWrapper<BuildingEnum> qw = new LambdaQueryWrapper<>();
+            qw.eq(BuildingEnum::getBuildingName, entity.getBuildingName());
+            if (buildingEnumService.count(qw) == 0) {
+                buildingEnumService.save(entity);
+            }
+        });
         }
             return ResultUtils.success("导入成功");
     }
@@ -209,6 +223,7 @@ public class BuildingEnumController  {
     @ApiOperation("批量删除")
     public BaseResponse deleteBatch(@RequestBody List<Integer> ids) {
         boolean flag = this.buildingEnumService.removeByIds(ids);
+        sequenceReset.resetIfEmpty("building_enum");
         return flag ? ResultUtils.success() : ResultUtils.error(ErrorCode.OPERATION_ERROR);
     }
 }

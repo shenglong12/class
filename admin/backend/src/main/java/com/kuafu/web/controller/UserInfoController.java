@@ -34,6 +34,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.kuafu.common.domin.BaseResponse;
 import com.kuafu.common.domin.ErrorCode;
 import com.kuafu.common.domin.ResultUtils;
+import com.kuafu.common.util.SqliteSequenceReset;
 import com.kuafu.common.util.StringUtils;
 import com.kuafu.web.entity.UserInfo;
 import com.kuafu.web.service.IUserInfoService;
@@ -59,6 +60,7 @@ public class UserInfoController  {
     private final MyEventService myEventService;
 
     private final ExcelProvider excelProvider;
+    private final SqliteSequenceReset sequenceReset;
     private final IStaticResourceService staticResourceService;
 
     @PostMapping("page")
@@ -264,10 +266,22 @@ public class UserInfoController  {
     {
         String extension = FileUploadUtils.getExtension(file);
         if (StringUtils.equalsIgnoreCase(extension, "pdf")) {
-            excelProvider.pdfData(file, UserInfo.class, userInfoService::saveBatch);
+            excelProvider.pdfData(file, UserInfo.class, entity -> {
+                LambdaQueryWrapper<UserInfo> qw = new LambdaQueryWrapper<>();
+                qw.eq(UserInfo::getStudentId, entity.getStudentId());
+                if (userInfoService.count(qw) == 0) {
+                    userInfoService.save(entity);
+                }
+            });
         }
         else{
-            excelProvider.importData(file, UserInfo.class, userInfoService::saveBatch);
+            excelProvider.importData(file, UserInfo.class, entity -> {
+                LambdaQueryWrapper<UserInfo> qw = new LambdaQueryWrapper<>();
+                qw.eq(UserInfo::getStudentId, entity.getStudentId());
+                if (userInfoService.count(qw) == 0) {
+                    userInfoService.save(entity);
+                }
+            });
         }
             return ResultUtils.success("导入成功");
     }
@@ -297,6 +311,7 @@ public class UserInfoController  {
     @ApiOperation("批量删除")
     public BaseResponse deleteBatch(@RequestBody List<Integer> ids) {
         boolean flag = this.userInfoService.removeByIds(ids);
+        sequenceReset.resetIfEmpty("user_info");
         return flag ? ResultUtils.success() : ResultUtils.error(ErrorCode.OPERATION_ERROR);
     }
 }

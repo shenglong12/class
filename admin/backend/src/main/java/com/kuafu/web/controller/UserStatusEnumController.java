@@ -34,6 +34,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.kuafu.common.domin.BaseResponse;
 import com.kuafu.common.domin.ErrorCode;
 import com.kuafu.common.domin.ResultUtils;
+import com.kuafu.common.util.SqliteSequenceReset;
 import com.kuafu.common.util.StringUtils;
 import com.kuafu.web.entity.UserStatusEnum;
 import com.kuafu.web.service.IUserStatusEnumService;
@@ -59,6 +60,7 @@ public class UserStatusEnumController  {
     private final MyEventService myEventService;
 
     private final ExcelProvider excelProvider;
+    private final SqliteSequenceReset sequenceReset;
     private final IStaticResourceService staticResourceService;
 
     @PostMapping("page")
@@ -176,10 +178,22 @@ public class UserStatusEnumController  {
     {
         String extension = FileUploadUtils.getExtension(file);
         if (StringUtils.equalsIgnoreCase(extension, "pdf")) {
-            excelProvider.pdfData(file, UserStatusEnum.class, userStatusEnumService::saveBatch);
+            excelProvider.pdfData(file, UserStatusEnum.class, entity -> {
+            LambdaQueryWrapper<UserStatusEnum> qw = new LambdaQueryWrapper<>();
+            qw.eq(UserStatusEnum::getStatusName, entity.getStatusName());
+            if (userStatusEnumService.count(qw) == 0) {
+                userStatusEnumService.save(entity);
+            }
+        });
         }
         else{
-            excelProvider.importData(file, UserStatusEnum.class, userStatusEnumService::saveBatch);
+            excelProvider.importData(file, UserStatusEnum.class, entity -> {
+            LambdaQueryWrapper<UserStatusEnum> qw = new LambdaQueryWrapper<>();
+            qw.eq(UserStatusEnum::getStatusName, entity.getStatusName());
+            if (userStatusEnumService.count(qw) == 0) {
+                userStatusEnumService.save(entity);
+            }
+        });
         }
             return ResultUtils.success("导入成功");
     }
@@ -209,6 +223,7 @@ public class UserStatusEnumController  {
     @ApiOperation("批量删除")
     public BaseResponse deleteBatch(@RequestBody List<Integer> ids) {
         boolean flag = this.userStatusEnumService.removeByIds(ids);
+        sequenceReset.resetIfEmpty("user_status_enum");
         return flag ? ResultUtils.success() : ResultUtils.error(ErrorCode.OPERATION_ERROR);
     }
 }

@@ -43,10 +43,10 @@ spring:
     resources:
       static-locations: file:${FRONTEND_DIR:} , classpath:/dist/
 
-# 在控制台输出sql
+# MyBatis SQL 日志：开发时可改为 StdOutImpl 调试，生产用 Slf4jImpl
 mybatis-plus:
   configuration:
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    log-impl: ${MYBATIS_LOG_IMPL:org.apache.ibatis.logging.nologging.NoLoggingImpl}
 
 
 login:

@@ -34,6 +34,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.kuafu.common.domin.BaseResponse;
 import com.kuafu.common.domin.ErrorCode;
 import com.kuafu.common.domin.ResultUtils;
+import com.kuafu.common.util.SqliteSequenceReset;
 import com.kuafu.common.util.StringUtils;
 import com.kuafu.web.entity.RepairOrder;
 import com.kuafu.web.service.IRepairOrderService;
@@ -59,6 +60,7 @@ public class RepairOrderController  {
     private final MyEventService myEventService;
 
     private final ExcelProvider excelProvider;
+    private final SqliteSequenceReset sequenceReset;
     private final IStaticResourceService staticResourceService;
 
     @PostMapping("page")
@@ -273,10 +275,10 @@ public class RepairOrderController  {
     {
         String extension = FileUploadUtils.getExtension(file);
         if (StringUtils.equalsIgnoreCase(extension, "pdf")) {
-            excelProvider.pdfData(file, RepairOrder.class, repairOrderService::saveBatch);
+            excelProvider.pdfData(file, RepairOrder.class, repairOrderService::save);
         }
         else{
-            excelProvider.importData(file, RepairOrder.class, repairOrderService::saveBatch);
+            excelProvider.importData(file, RepairOrder.class, repairOrderService::save);
         }
             return ResultUtils.success("导入成功");
     }
@@ -306,6 +308,7 @@ public class RepairOrderController  {
     @ApiOperation("批量删除")
     public BaseResponse deleteBatch(@RequestBody List<Integer> ids) {
         boolean flag = this.repairOrderService.removeByIds(ids);
+        sequenceReset.resetIfEmpty("repair_order");
         return flag ? ResultUtils.success() : ResultUtils.error(ErrorCode.OPERATION_ERROR);
     }
 }

@@ -34,6 +34,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.kuafu.common.domin.BaseResponse;
 import com.kuafu.common.domin.ErrorCode;
 import com.kuafu.common.domin.ResultUtils;
+import com.kuafu.common.util.SqliteSequenceReset;
 import com.kuafu.common.util.StringUtils;
 import com.kuafu.web.entity.RoleEnum;
 import com.kuafu.web.service.IRoleEnumService;
@@ -59,6 +60,7 @@ public class RoleEnumController  {
     private final MyEventService myEventService;
 
     private final ExcelProvider excelProvider;
+    private final SqliteSequenceReset sequenceReset;
     private final IStaticResourceService staticResourceService;
 
     @PostMapping("page")
@@ -176,10 +178,22 @@ public class RoleEnumController  {
     {
         String extension = FileUploadUtils.getExtension(file);
         if (StringUtils.equalsIgnoreCase(extension, "pdf")) {
-            excelProvider.pdfData(file, RoleEnum.class, roleEnumService::saveBatch);
+            excelProvider.pdfData(file, RoleEnum.class, entity -> {
+            LambdaQueryWrapper<RoleEnum> qw = new LambdaQueryWrapper<>();
+            qw.eq(RoleEnum::getRoleName, entity.getRoleName());
+            if (roleEnumService.count(qw) == 0) {
+                roleEnumService.save(entity);
+            }
+        });
         }
         else{
-            excelProvider.importData(file, RoleEnum.class, roleEnumService::saveBatch);
+            excelProvider.importData(file, RoleEnum.class, entity -> {
+            LambdaQueryWrapper<RoleEnum> qw = new LambdaQueryWrapper<>();
+            qw.eq(RoleEnum::getRoleName, entity.getRoleName());
+            if (roleEnumService.count(qw) == 0) {
+                roleEnumService.save(entity);
+            }
+        });
         }
             return ResultUtils.success("导入成功");
     }
@@ -209,6 +223,7 @@ public class RoleEnumController  {
     @ApiOperation("批量删除")
     public BaseResponse deleteBatch(@RequestBody List<Integer> ids) {
         boolean flag = this.roleEnumService.removeByIds(ids);
+        sequenceReset.resetIfEmpty("role_enum");
         return flag ? ResultUtils.success() : ResultUtils.error(ErrorCode.OPERATION_ERROR);
     }
 }

@@ -34,6 +34,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.kuafu.common.domin.BaseResponse;
 import com.kuafu.common.domin.ErrorCode;
 import com.kuafu.common.domin.ResultUtils;
+import com.kuafu.common.util.SqliteSequenceReset;
 import com.kuafu.common.util.StringUtils;
 import com.kuafu.web.entity.ClassroomInfo;
 import com.kuafu.web.service.IClassroomInfoService;
@@ -59,6 +60,7 @@ public class ClassroomInfoController  {
     private final MyEventService myEventService;
 
     private final ExcelProvider excelProvider;
+    private final SqliteSequenceReset sequenceReset;
     private final IStaticResourceService staticResourceService;
 
     @PostMapping("page")
@@ -198,10 +200,24 @@ public class ClassroomInfoController  {
     {
         String extension = FileUploadUtils.getExtension(file);
         if (StringUtils.equalsIgnoreCase(extension, "pdf")) {
-            excelProvider.pdfData(file, ClassroomInfo.class, classroomInfoService::saveBatch);
+            excelProvider.pdfData(file, ClassroomInfo.class, entity -> {
+                LambdaQueryWrapper<ClassroomInfo> qw = new LambdaQueryWrapper<>();
+                qw.eq(ClassroomInfo::getBuildingEnumBuildingEnumId1, entity.getBuildingEnumBuildingEnumId1())
+                  .eq(ClassroomInfo::getRoomNumber, entity.getRoomNumber());
+                if (classroomInfoService.count(qw) == 0) {
+                    classroomInfoService.save(entity);
+                }
+            });
         }
         else{
-            excelProvider.importData(file, ClassroomInfo.class, classroomInfoService::saveBatch);
+            excelProvider.importData(file, ClassroomInfo.class, entity -> {
+                LambdaQueryWrapper<ClassroomInfo> qw = new LambdaQueryWrapper<>();
+                qw.eq(ClassroomInfo::getBuildingEnumBuildingEnumId1, entity.getBuildingEnumBuildingEnumId1())
+                  .eq(ClassroomInfo::getRoomNumber, entity.getRoomNumber());
+                if (classroomInfoService.count(qw) == 0) {
+                    classroomInfoService.save(entity);
+                }
+            });
         }
             return ResultUtils.success("导入成功");
     }
@@ -231,6 +247,7 @@ public class ClassroomInfoController  {
     @ApiOperation("批量删除")
     public BaseResponse deleteBatch(@RequestBody List<Integer> ids) {
         boolean flag = this.classroomInfoService.removeByIds(ids);
+        sequenceReset.resetIfEmpty("classroom_info");
         return flag ? ResultUtils.success() : ResultUtils.error(ErrorCode.OPERATION_ERROR);
     }
 }

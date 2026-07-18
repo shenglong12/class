@@ -34,6 +34,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.kuafu.common.domin.BaseResponse;
 import com.kuafu.common.domin.ErrorCode;
 import com.kuafu.common.domin.ResultUtils;
+import com.kuafu.common.util.SqliteSequenceReset;
 import com.kuafu.common.util.StringUtils;
 import com.kuafu.web.entity.RepairStatusEnum;
 import com.kuafu.web.service.IRepairStatusEnumService;
@@ -59,6 +60,7 @@ public class RepairStatusEnumController  {
     private final MyEventService myEventService;
 
     private final ExcelProvider excelProvider;
+    private final SqliteSequenceReset sequenceReset;
     private final IStaticResourceService staticResourceService;
 
     @PostMapping("page")
@@ -176,10 +178,22 @@ public class RepairStatusEnumController  {
     {
         String extension = FileUploadUtils.getExtension(file);
         if (StringUtils.equalsIgnoreCase(extension, "pdf")) {
-            excelProvider.pdfData(file, RepairStatusEnum.class, repairStatusEnumService::saveBatch);
+            excelProvider.pdfData(file, RepairStatusEnum.class, entity -> {
+            LambdaQueryWrapper<RepairStatusEnum> qw = new LambdaQueryWrapper<>();
+            qw.eq(RepairStatusEnum::getStatusName, entity.getStatusName());
+            if (repairStatusEnumService.count(qw) == 0) {
+                repairStatusEnumService.save(entity);
+            }
+        });
         }
         else{
-            excelProvider.importData(file, RepairStatusEnum.class, repairStatusEnumService::saveBatch);
+            excelProvider.importData(file, RepairStatusEnum.class, entity -> {
+            LambdaQueryWrapper<RepairStatusEnum> qw = new LambdaQueryWrapper<>();
+            qw.eq(RepairStatusEnum::getStatusName, entity.getStatusName());
+            if (repairStatusEnumService.count(qw) == 0) {
+                repairStatusEnumService.save(entity);
+            }
+        });
         }
             return ResultUtils.success("导入成功");
     }
@@ -209,6 +223,7 @@ public class RepairStatusEnumController  {
     @ApiOperation("批量删除")
     public BaseResponse deleteBatch(@RequestBody List<Integer> ids) {
         boolean flag = this.repairStatusEnumService.removeByIds(ids);
+        sequenceReset.resetIfEmpty("repair_status_enum");
         return flag ? ResultUtils.success() : ResultUtils.error(ErrorCode.OPERATION_ERROR);
     }
 }

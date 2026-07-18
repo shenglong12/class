@@ -34,6 +34,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.kuafu.common.domin.BaseResponse;
 import com.kuafu.common.domin.ErrorCode;
 import com.kuafu.common.domin.ResultUtils;
+import com.kuafu.common.util.SqliteSequenceReset;
 import com.kuafu.common.util.StringUtils;
 import com.kuafu.web.entity.CourseInfo;
 import com.kuafu.web.service.ICourseInfoService;
@@ -59,6 +60,7 @@ public class CourseInfoController  {
     private final MyEventService myEventService;
 
     private final ExcelProvider excelProvider;
+    private final SqliteSequenceReset sequenceReset;
     private final IStaticResourceService staticResourceService;
 
     @PostMapping("page")
@@ -264,10 +266,10 @@ public class CourseInfoController  {
     {
         String extension = FileUploadUtils.getExtension(file);
         if (StringUtils.equalsIgnoreCase(extension, "pdf")) {
-            excelProvider.pdfData(file, CourseInfo.class, courseInfoService::saveBatch);
+            excelProvider.pdfData(file, CourseInfo.class, courseInfoService::save);
         }
         else{
-            excelProvider.importData(file, CourseInfo.class, courseInfoService::saveBatch);
+            excelProvider.importData(file, CourseInfo.class, courseInfoService::save);
         }
             return ResultUtils.success("导入成功");
     }
@@ -297,6 +299,7 @@ public class CourseInfoController  {
     @ApiOperation("批量删除")
     public BaseResponse deleteBatch(@RequestBody List<Integer> ids) {
         boolean flag = this.courseInfoService.removeByIds(ids);
+        sequenceReset.resetIfEmpty("course_info");
         return flag ? ResultUtils.success() : ResultUtils.error(ErrorCode.OPERATION_ERROR);
     }
 }

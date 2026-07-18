@@ -288,6 +288,7 @@ const httpRequest = async item => {
       })
       data.upload.open = false
       loadingBut.value = false
+      emit("refreshTableData")
     }
   } catch (error) {
     loadingBut.value = false

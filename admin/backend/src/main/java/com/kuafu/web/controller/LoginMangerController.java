@@ -208,7 +208,7 @@ public class LoginMangerController {
     public BaseResponse importExcel(@RequestPart(name = "file") MultipartFile file)
     {
         try {
-            excelProvider.importData(file, Login.class, loginService::saveBatch);
+            excelProvider.importData(file, Login.class, loginService::save);
         } catch (Exception e) {
             e.printStackTrace();
             return ResultUtils.error("导入失败");

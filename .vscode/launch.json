@@ -6,6 +6,13 @@
             "name": "AdminApplication",
             "request": "launch",
             "mainClass": "com.kuafu.AdminApplication",
+            "projectName": ""
+        },
+        {
+            "type": "java",
+            "name": "AdminApplication",
+            "request": "launch",
+            "mainClass": "com.kuafu.AdminApplication",
             "projectName": "com.kuafu-app"
         },
         {
